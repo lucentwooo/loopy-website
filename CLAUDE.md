@@ -53,9 +53,11 @@ violet accents (one per mechanism card). DM Sans everywhere - no mono faces anyw
 on the site (JetBrains Mono was removed 2026-07).
 
 **Ad imagery is data-driven where it repeats.** `lib/creatives.ts` holds the hero ad
-wall columns (`HERO_WALL_A/B`, brand `ad-01`s) and the final-CTA marquee
-(`CTA_MARQUEE`, brand `ad-02`s) — each rendered twice for seamless -50% translate
-loops. Real Loopy app UI (brand profile, research, ranked board, what's working,
+wall columns (`HERO_WALL_A/B`) and the final-CTA marquee (`CTA_MARQUEE`) — each
+rendered twice for seamless -50% translate loops. Since 2026-08-24 these are real
+winners from the platform's shared swipe library (`competitor_ads` in Supabase),
+downloaded into `public/creatives/library/`; the old per-brand demo reskins remain
+in `public/creatives/<brand>/` but are no longer referenced. Real Loopy app UI (brand profile, research, ranked board, what's working,
 brief concept card - all for the Svens Island client) lives in `public/app/`, hard-coded
 in Mechanism + BatchGrid; captured at 2x via the app repo's
 `scripts/capture-marketing-ui-*.mjs` (never via generation clicks). No Salesgraph
