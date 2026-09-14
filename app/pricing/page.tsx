@@ -7,7 +7,7 @@ import { Footer } from '@/components/Footer/Footer';
 export const metadata: Metadata = {
   title: 'Pricing - Loopy · free first brief, plans from $249/mo',
   description:
-    'Try Loopy free on a real client: research, ranked ad concepts and a ready-to-send creative brief, no card. Starter $249/mo, Agency $499/mo. Quarterly −7.5%, annual −15%.',
+    'Try Loopy free on a real client: research, ranked ad concepts and a ready-to-send creative brief, no card. Starter $249/mo, Agency $499/mo. Annual billing: 2 months free.',
   alternates: { canonical: '/pricing' },
 };
 
@@ -16,7 +16,7 @@ const FAQS: FaqItem[] = [
     q: 'Do you offer discounts?',
     a: (
       <>
-        Yes - quarterly billing takes 7.5% off every paid plan and annual billing takes 15% off. The toggle at the top
+        Yes - pay yearly on any paid plan and you get 2 months free. The toggle at the top
         of the pricing table shows the exact monthly-equivalent price for each.
       </>
     ),

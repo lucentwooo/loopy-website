@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import { HERO_WALL_A, HERO_WALL_B, type Creative } from '@/lib/creatives';
-import { CAL_URL } from '@/lib/site';
+import { APP_URL, CAL_URL } from '@/lib/site';
 import styles from './Hero.module.css';
 
 /* Each column renders its set twice: the drift animation translates the
@@ -40,10 +40,13 @@ export function Hero() {
           </p>
           <div className={styles.ctaRow}>
             <a href={CAL_URL} className={styles.cta}>
-              see it run on a client <span aria-hidden="true">↗</span>
+              book a call, get free briefs <span aria-hidden="true">↗</span>
+            </a>
+            <a href={APP_URL} className={styles.appCta}>
+              try the platform <span aria-hidden="true">→</span>
             </a>
           </div>
-          <p className={styles.fineprint}>first client brief free - no card</p>
+          <p className={styles.fineprint}>free briefs in exchange for your feedback - no card</p>
         </div>
         <div className={styles.adWall} aria-label="A wall of winning Meta ads from the Loopy swipe library">
           <div className={styles.wallGrid}>

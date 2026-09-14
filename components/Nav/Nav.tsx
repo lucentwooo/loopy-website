@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { CAL_URL } from '@/lib/site';
+import { APP_URL, CAL_URL } from '@/lib/site';
 import styles from './Nav.module.css';
 
 export function Nav({ page = 'landing' }: { page?: 'landing' | 'pricing' | 'content' }) {
@@ -21,9 +21,14 @@ export function Nav({ page = 'landing' }: { page?: 'landing' | 'pricing' | 'cont
           </Link>
           <a href="#faq">faq</a>
         </div>
-        <a className={styles.cta} href={CAL_URL}>
-          book intro call <span aria-hidden="true">↗</span>
-        </a>
+        <div className={styles.actions}>
+          <a className={styles.appCta} href={APP_URL}>
+            try the platform
+          </a>
+          <a className={styles.cta} href={CAL_URL}>
+            book <span className={styles.wide}>intro </span>call <span aria-hidden="true">↗</span>
+          </a>
+        </div>
       </div>
     </nav>
   );

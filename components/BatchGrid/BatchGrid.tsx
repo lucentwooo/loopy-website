@@ -107,24 +107,30 @@ export function BatchGrid() {
       </figure>
       <p className={styles.gridLabel}>the other arguments in the same brief - headlines as written, tagged by the case they make</p>
       <ul className={styles.grid}>
-        {CONCEPTS.map((c) => (
-          <li key={c.n} className={styles.concept}>
-            <div className={styles.conceptHead}>
-              <span className={`${styles.tag} ${TAG_CLASS[c.tag]}`}>{c.tag}</span>
-              <span className={styles.conceptMeta}>
-                concept {c.n} - {c.format}
-              </span>
-            </div>
-            <ol className={styles.variations}>
-              {c.headlines.map((h, i) => (
-                <li key={h} className={styles.variation}>
-                  <span className={styles.vLabel}>V{i + 1}</span>
-                  <span className={styles.vText}>{h}</span>
-                </li>
-              ))}
-            </ol>
-          </li>
-        ))}
+        {CONCEPTS.map((c) => {
+          const [lead, ...alts] = c.headlines;
+          return (
+            <li key={c.n} className={`${styles.concept} ${TAG_CLASS[c.tag]}`}>
+              <div className={styles.conceptHead}>
+                <span className={styles.tag}>{c.tag}</span>
+                <span className={styles.conceptNum}>concept {c.n}</span>
+              </div>
+              <p className={styles.format}>{c.format}</p>
+              <div className={styles.lead}>
+                <span className={styles.vLabel}>V1</span>
+                <p className={styles.leadText}>{lead}</p>
+              </div>
+              <ol className={styles.variations} start={2}>
+                {alts.map((h, i) => (
+                  <li key={h} className={styles.variation}>
+                    <span className={styles.vLabel}>V{i + 2}</span>
+                    <span className={styles.vText}>{h}</span>
+                  </li>
+                ))}
+              </ol>
+            </li>
+          );
+        })}
       </ul>
       <p className={styles.fineprint}>real brief, real copy - shown as Loopy wrote it, nothing retouched</p>
     </section>

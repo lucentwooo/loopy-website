@@ -111,6 +111,15 @@
 .price + .planTag {
   margin-top: 8px;
 }
+.billed {
+  margin: 8px 0 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--accent);
+}
+.billed + .planTag {
+  margin-top: 2px;
+}
 .priceUnit {
   font-size: 15px;
   font-weight: 500;
