@@ -15,7 +15,7 @@ import { PAID_PLANS } from '@/lib/billing-catalog';
 const FAQS: FaqItem[] = [
   {
     q: 'Is this just another AI template tool?',
-    a: 'No prompt box, no template picker. A real browser loads your client’s live site and measures the actual hex colors, fonts and logo on it; the angles come from real customer research and a competitor library ranked by how long Meta kept each ad running. Templates guess. We do the homework.',
+    a: 'No prompt box, no template picker. A real browser loads your client’s live site and measures the actual hex colors, fonts and logo on it; the angles come from real customer research and a competitor library ranked by how long Meta kept each ad running. Templates guess. Loopy works from classic direct-response frameworks and the internal docs of an agency scaling nine-figure DTC brands.',
   },
   {
     q: 'Will it invent things about my client’s brand?',
@@ -47,7 +47,7 @@ const FAQS: FaqItem[] = [
     a: (
       <>
         Your first client brief is free on a real client, no card. After that, plans start at ${PAID_PLANS[0].monthlyPrice}{' '}
-        per month - quarterly billing takes 7.5% off and annual takes 15% -{' '}
+        per month - annual billing gets you 2 months free -{' '}
         <Link href="/pricing" className="signal">
           full pricing here
         </Link>

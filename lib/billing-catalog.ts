@@ -2,12 +2,11 @@
  *  JSON-LD offers and anywhere prices are shown. Stripe mirrors these
  *  products/prices; change them here first. */
 
-export type BillingPeriod = 'monthly' | 'quarterly' | 'annual';
+export type BillingPeriod = 'monthly' | 'annual';
 
 export const PERIOD_MULTIPLIER: Record<BillingPeriod, number> = {
   monthly: 1,
-  quarterly: 0.925, // −7.5%
-  annual: 0.85, // −15%
+  annual: 10 / 12, // 2 months free
 };
 
 export interface PaidPlan {

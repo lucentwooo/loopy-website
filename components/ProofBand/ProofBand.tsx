@@ -10,9 +10,10 @@ export function ProofBand() {
   return (
     <section className={styles.band}>
       <div className="wrap">
-        <p className="eyebrow">in the field</p>
+        <p className="eyebrow">built by operators</p>
         <p className={styles.kicker}>
-          In daily use at a performance agency running Meta ads for established DTC brands.
+          Built on foundational direct-response marketing concepts and the internal playbooks of a performance agency
+          running Meta ads for nine-figure DTC brands - where it&rsquo;s in daily use today.
         </p>
         <div className={styles.stats}>
           {STATS.map((s) => (

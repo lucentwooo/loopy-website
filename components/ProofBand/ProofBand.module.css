@@ -10,6 +10,9 @@
   font-weight: 500;
   letter-spacing: var(--track-display);
   color: var(--fg);
+  max-width: 820px;
+  line-height: 1.4;
+  text-wrap: balance;
 }
 
 .stats {

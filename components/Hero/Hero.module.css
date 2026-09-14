@@ -50,10 +50,27 @@
 .ctaRow {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 12px;
+  flex-wrap: wrap;
   margin-top: 32px;
 }
+.appCta {
+  white-space: nowrap;
+  text-decoration: none;
+  color: var(--fg);
+  font-weight: 600;
+  font-size: 17px;
+  padding: 14px 25px;
+  border: 1px solid var(--fg);
+  border-radius: var(--radius-btn);
+  transition: background var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease);
+}
+.appCta:hover {
+  background: var(--fg);
+  color: #fff;
+}
 .cta {
+  white-space: nowrap;
   text-decoration: none;
   background: var(--accent);
   color: #fff;
@@ -74,6 +91,14 @@
 .fineprint b {
   color: var(--fg);
   font-weight: 600;
+}
+
+@media (min-width: 761px) and (max-width: 1180px) {
+  .cta,
+  .appCta {
+    font-size: 15px;
+    padding-inline: 18px;
+  }
 }
 
 /* --- the ad wall --- */

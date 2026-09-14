@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { CAL_URL } from '@/lib/site';
+import { APP_URL, CAL_URL } from '@/lib/site';
 import styles from './Footer.module.css';
 
 /* No privacy/terms links — intentionally removed (design decision). */
@@ -22,6 +22,7 @@ export function Footer({ page = 'landing' }: { page?: 'landing' | 'pricing' | 'c
         <div className={styles.links}>
           <div className={styles.col}>
             <span className={styles.colHead}>product</span>
+            <a href={APP_URL}>try the platform</a>
             <a href={`${prefix}#how`}>how it works</a>
             <Link href="/pricing">pricing</Link>
             <Link href="/ad-creative-brief-template">ad brief template</Link>

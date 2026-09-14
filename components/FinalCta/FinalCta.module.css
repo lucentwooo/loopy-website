@@ -68,6 +68,26 @@
 .button:hover {
   background: var(--accent-hover);
 }
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+}
+.appButton {
+  text-decoration: none;
+  color: #fff;
+  font-weight: 600;
+  font-size: 17px;
+  padding: 15px 27px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: var(--radius-btn);
+  transition: background var(--dur-fast) var(--ease), border-color var(--dur-fast) var(--ease);
+}
+.appButton:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: #fff;
+}
 .fineprint {
   margin: 0;
   font-size: 14px;
