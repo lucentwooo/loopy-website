@@ -12,6 +12,15 @@ const nextConfig: NextConfig = {
     // where q75 WebP visibly smears small type.
     qualities: [75, 90],
   },
+  // PostHog reverse proxy: ad blockers block posthog.com by domain name, so the
+  // browser talks to /ingest on our own domain and Vercel forwards it.
+  skipTrailingSlashRedirect: true,
+  async rewrites() {
+    return [
+      { source: '/ingest/static/:path*', destination: 'https://us-assets.i.posthog.com/static/:path*' },
+      { source: '/ingest/:path*', destination: 'https://us.i.posthog.com/:path*' },
+    ];
+  },
 };
 
 export default nextConfig;
