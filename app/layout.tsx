@@ -4,6 +4,7 @@ import { DM_Sans } from 'next/font/google';
 import './globals.css';
 import { SITE_URL } from '@/lib/site';
 import { FREE_PLAN, PAID_PLANS } from '@/lib/billing-catalog';
+import { PostHog } from '@/components/PostHog';
 
 const dmSans = DM_Sans({
   subsets: ['latin'],
@@ -97,6 +98,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, '\\u003c') }}
         />
         {children}
+        <PostHog />
       </body>
       <GoogleAnalytics gaId="G-KWJK7YVM44" />
     </html>
