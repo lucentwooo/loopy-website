@@ -1,80 +1,87 @@
 /* =================================================================
-   Loopy — colors & type tokens
+   Loopy: colors and type tokens
 
    White paper. Ink. Electric-blue signal plus small coral / mint /
-   violet accents. Promoted from the landing + pricing design handoff
-   (2026-07, design_handoff_loopy_landing).
+   violet pops. Semantic names and values follow the Loopy DS v2
+   mockup tokens (app repo: docs/design/loopy-ds-v2/mockups/v2.css,
+   landing v7, 2026-10-01).
    ================================================================= */
 
 :root {
   /* ---------------------------------------------------------------
-     Color — brand
+     Color: brand
      --------------------------------------------------------------- */
 
   /* Surfaces */
   --loopy-white:        #ffffff;   /* default background */
   --loopy-raised:       #f8f9fb;   /* raised band / card well */
-  --loopy-inset:        #f1f3f7;   /* inset control track (billing toggle) */
+  --loopy-inset:        #f1f3f7;   /* sunken tiles: no border, no shadow */
+  --loopy-page:         #edeef2;   /* active nav pill */
 
   /* Ink */
   --loopy-ink:          #0e1116;   /* type, dark sections */
   --loopy-ink-2:        #3c414c;   /* secondary type */
-  --loopy-ink-3:        #6b7280;   /* tertiary type / body on cards */
-  --loopy-ink-4:        #9aa0ac;   /* muted / fineprint */
+  --loopy-ink-3:        #686f7d;   /* tertiary type */
+  --loopy-ink-4:        #8f95a1;   /* muted / fineprint */
 
-  /* Signal — electric blue. The brand arrow. */
+  /* Signal: electric blue. One primary action per screen. */
   --loopy-blue:         #1c42e6;
   --loopy-blue-hover:   #1734b8;
   --loopy-blue-soft:    #eaeeff;   /* tint chips / step circles */
   --loopy-blue-border:  #cfd9ff;   /* border on blue tint chips */
 
-  /* Accent pops — used sparingly, one per mechanism card */
+  /* Accent pops, used only inside illustration cards */
   --loopy-coral:        #ff6a4d;
   --loopy-coral-soft:   #ffece6;
   --loopy-coral-border: #ffd4c7;
   --loopy-mint:         #14be93;
   --loopy-violet:       #7b61ff;
-  --loopy-success:      #12a06e;   /* pricing check marks */
-  --loopy-periwinkle:   #9db4ff;   /* blue accents on the dark mechanism card */
-  --loopy-parchment:    #f7f3e7;   /* salesgraph.com page background (browser mock) */
+  --loopy-success:      #12a06e;
+  --loopy-periwinkle:   #9db4ff;   /* blue accents on dark cards */
 
   /* Borders */
   --loopy-border:       #e4e7ee;   /* pills / chips / secondary buttons */
-  --loopy-hairline:     #edeff3;   /* section rules, nav border */
+  --loopy-hairline:     #edeff3;   /* section rules */
+  --loopy-control:      #8b93a1;   /* control borders on hover */
   --loopy-card-border:  #e7e9f0;   /* cards + ad images */
 
   /* ---------------------------------------------------------------
-     Semantic colors — refer to brand tokens above. Use these in UI.
+     Semantic colors: refer to brand tokens above. Use these in UI.
      --------------------------------------------------------------- */
   --bg:               var(--loopy-white);
   --bg-raised:        var(--loopy-raised);
+  --bg-sunken:        var(--loopy-inset);
   --bg-inset:         var(--loopy-inset);
   --bg-ink:           var(--loopy-ink);
+  --page:             var(--loopy-page);
   --fg:               var(--loopy-ink);
   --fg-2:             var(--loopy-ink-2);
   --fg-3:             var(--loopy-ink-3);
   --fg-muted:         var(--loopy-ink-4);
   --border:           var(--loopy-border);
   --border-hairline:  var(--loopy-hairline);
+  --border-control:   var(--loopy-control);
   --border-card:      var(--loopy-card-border);
   --accent:           var(--loopy-blue);
   --accent-hover:     var(--loopy-blue-hover);
   --accent-soft:      var(--loopy-blue-soft);
   --accent-border:    var(--loopy-blue-border);
+  --pop-coral:        var(--loopy-coral);
+  --pop-mint:         var(--loopy-mint);
+  --pop-violet:       var(--loopy-violet);
+  --success:          var(--loopy-success);
 
   /* ---------------------------------------------------------------
-     Type — families & scale
-
-     DM Sans for everything (via next/font variable). No mono faces
-     anywhere on the site.
+     Type: Inter everywhere (variable font via next/font in
+     app/layout.tsx). No mono faces anywhere on the site.
      --------------------------------------------------------------- */
-  --font-sans:        var(--font-dm-sans), ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-sans:        var(--font-inter), ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
 
   --track-display:    -0.03em;
   --track-caps:       0.08em;
 
   /* ---------------------------------------------------------------
-     Spacing — 8px grid
+     Spacing: 8px grid
      --------------------------------------------------------------- */
   --space-1:   4px;
   --space-2:   8px;
@@ -88,15 +95,18 @@
   --space-10:  112px;
 
   /* ---------------------------------------------------------------
-     Radii — 8 chips, 10 buttons, 12 ad images, 14 cards,
-     18 large cards, 999 pills.
+     Radii: the DS v2 scale, plus the older named radii the brief
+     template page still uses.
      --------------------------------------------------------------- */
+  --radius-sm:        8px;
+  --radius-md:        10px;
+  --radius-lg:        14px;
+  --radius-xl:        18px;
+  --radius-full:      999px;
   --radius-chip:      8px;
   --radius-btn:       10px;
   --radius-ad:        12px;
   --radius-card:      14px;
-  --radius-lg:        18px;
-  --radius-full:      999px;
 
   /* ---------------------------------------------------------------
      Shadows
@@ -104,19 +114,38 @@
   --shadow-card:      0 1px 2px rgba(14, 17, 22, 0.05), 0 4px 14px -8px rgba(14, 17, 22, 0.10);
   --shadow-featured:  0 2px 6px rgba(14, 17, 22, 0.06), 0 18px 40px -18px rgba(14, 17, 22, 0.18);
   --shadow-dark:      0 30px 70px -30px rgba(14, 17, 22, 0.32);
+  --float-shadow:     0 26px 50px -26px rgba(14, 17, 22, 0.36), 0 2px 6px rgba(14, 17, 22, 0.06);
 
   /* ---------------------------------------------------------------
-     Motion — one easing curve: 120ms hovers, 200ms state changes.
+     Page layout (landing v7)
+     --------------------------------------------------------------- */
+  --wrap:             1176px;
+  --gutter:           24px;
+  --sec:              176px;     /* gap above each section */
+  --line:             #b9bfca;   /* loop diagram rules */
+  --btn-border:       #d8dce4;   /* outline pills */
+  --win-dot:          #dde0e6;   /* browser-window dots */
+
+  /* ---------------------------------------------------------------
+     Motion: one easing curve, 120ms hovers, 200ms state changes.
      --------------------------------------------------------------- */
   --ease:             cubic-bezier(0.2, 0, 0, 1);
   --dur-fast:         120ms;
   --dur-base:         200ms;
 }
 
+@media (max-width: 720px) {
+  :root { --gutter: 16px; --sec: 112px; }
+}
+
 /* =================================================================
    Base resets + body
    ================================================================= */
 *, *::before, *::after { box-sizing: border-box; }
+* { margin: 0; padding: 0; }
+img { display: block; max-width: none; }
+ol, ul { list-style: none; }
+a { color: inherit; text-decoration: none; }
 
 html {
   -webkit-font-smoothing: antialiased;
@@ -125,27 +154,20 @@ html {
 }
 
 body {
-  margin: 0;
   font-family: var(--font-sans);
   font-size: 16px;
   line-height: 1.5;
+  letter-spacing: -0.011em;
   color: var(--fg);
   background: var(--bg);
 }
 
-p { margin: 0; }
-h1, h2, h3 { margin: 0; }
-
-/* Links — plain nav/footer links are styled per component; `signal`
-   is the inline blue text link. */
-a.signal { color: var(--accent); text-decoration: underline; text-underline-offset: 2px; }
-a.signal:hover { color: var(--accent-hover); }
-
 ::selection { background: var(--accent); color: #ffffff; }
 
-:focus-visible {
-  outline: 2px solid var(--accent);
-  outline-offset: 2px;
-}
+:focus-visible { outline: 2px solid var(--fg); outline-offset: 3px; border-radius: 6px; }
 
 summary::-webkit-details-marker { display: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+}

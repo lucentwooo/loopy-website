@@ -1,15 +1,16 @@
 import type { Metadata } from 'next';
 import { GoogleAnalytics } from '@next/third-parties/google';
-import { DM_Sans } from 'next/font/google';
+import { Inter } from 'next/font/google';
 import './globals.css';
 import { SITE_URL } from '@/lib/site';
 import { FREE_PLAN, PAID_PLANS } from '@/lib/billing-catalog';
 import { PostHog } from '@/components/PostHog';
 
-const dmSans = DM_Sans({
+// Variable Inter (no weight list): the design uses in-between weights such as
+// 450, 550 and 650.
+const inter = Inter({
   subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
-  variable: '--font-dm-sans',
+  variable: '--font-inter',
   display: 'swap',
 });
 
@@ -91,7 +92,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={dmSans.variable}>
+    <html lang="en" className={inter.variable}>
       <body>
         <script
           type="application/ld+json"
