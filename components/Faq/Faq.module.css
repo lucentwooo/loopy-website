@@ -1,53 +1,23 @@
-.section {
-  max-width: 760px;
-  margin: 0 auto;
-  width: 100%;
+/* FAQ (#faq): headline left, native details accordion right. */
+.faq { display: grid; grid-template-columns: 5fr 7fr; gap: 64px; align-items: start; }
+.list { border-top: 1px solid var(--border-hairline); }
+.list details { border-bottom: 1px solid var(--border-hairline); }
+.list summary {
+  list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 24px;
+  padding: 24px 0; font-size: 18px; line-height: 26px; font-weight: 500; letter-spacing: -0.015em;
 }
-.landing {
-  padding: 32px 32px 112px;
-}
-.pricing {
-  padding: 80px 32px 96px;
-}
-.h2 {
-  font-size: clamp(28px, 3vw, 35px);
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  margin: 0 0 32px;
-}
-.item {
-  border-top: 1px solid var(--border-hairline);
-  padding: 20px 0;
-}
-.item:last-of-type {
-  border-bottom: 1px solid var(--border-hairline);
-}
-.summary {
-  cursor: pointer;
-  list-style: none;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 18px;
-  font-weight: 600;
-}
-.plus {
-  color: var(--accent);
-  font-weight: 700;
-}
-.answer {
-  margin: 12px 0 0;
-  font-size: 16px;
-  line-height: 1.6;
-  color: var(--fg-3);
-  max-width: 640px;
+.list summary::-webkit-details-marker { display: none; }
+.list summary .pm { position: relative; flex-shrink: 0; width: 14px; height: 14px; }
+.list summary .pm::before, .list summary .pm::after { content: ''; position: absolute; left: 0; top: 6.5px; width: 14px; height: 1.5px; background: var(--fg-2); border-radius: 1px; transition: transform .2s ease; }
+.list summary .pm::after { transform: rotate(90deg); }
+.list details[open] .pm::after { transform: rotate(0deg); }
+.list details p { padding: 0 48px 28px 0; margin-top: -6px; font-size: 16.5px; line-height: 27px; color: var(--fg-2); max-width: 640px; }
+
+@media (max-width: 1180px) {
+  .faq { grid-template-columns: 1fr; gap: 40px; }
 }
 
-@media (max-width: 760px) {
-  .landing {
-    padding: 8px 24px 72px;
-  }
-  .pricing {
-    padding: 64px 24px 80px;
-  }
+@media (max-width: 720px) {
+  .list summary { font-size: 17px; line-height: 24px; padding: 20px 0; }
+  .list details p { padding-right: 0; font-size: 16px; line-height: 25px; }
 }

@@ -6,7 +6,7 @@ export type BillingPeriod = 'monthly' | 'annual';
 
 export const PERIOD_MULTIPLIER: Record<BillingPeriod, number> = {
   monthly: 1,
-  annual: 10 / 12, // 2 months free
+  annual: 0.85, // pay yearly, save 15% (the app's TERM_DISCOUNT.annual)
 };
 
 export interface PaidPlan {

@@ -1,146 +1,151 @@
 'use client';
 
 import { useState } from 'react';
-import { CAL_URL } from '@/lib/site';
-import {
-  FREE_PLAN,
-  PAID_PLANS,
-  STUDIO_PLAN,
-  priceFor,
-  type BillingPeriod,
-} from '@/lib/billing-catalog';
+import { APP_URL, CAL_URL } from '@/lib/site';
+import { FREE_PLAN, PAID_PLANS, STUDIO_PLAN, priceFor, type BillingPeriod, type PaidPlan } from '@/lib/billing-catalog';
 import styles from './Pricing.module.css';
 
-type Period = BillingPeriod;
+const [STARTER, AGENCY] = PAID_PLANS;
 
-const PERIODS: { key: Period; label: string; discount?: string }[] = [
-  { key: 'monthly', label: 'monthly' },
-  { key: 'annual', label: 'annual', discount: '2 months free' },
+type Plan = {
+  name: string;
+  tag: string;
+  cta: string;
+  href: string;
+  hot?: boolean;
+  /** Paid plans show a price per month and per brand; the rest show `flat`. */
+  paid?: PaidPlan;
+  flat?: string;
+  includes: string[];
+};
+
+const PLANS: Plan[] = [
+  {
+    name: FREE_PLAN.name,
+    tag: 'See it work on your real brand.',
+    flat: '$0',
+    cta: 'Start free',
+    href: APP_URL,
+    includes: [
+      `${FREE_PLAN.brands} brand`,
+      '1 full brief: research, hooks, copy',
+      `${FREE_PLAN.researchRuns} customer research run`,
+      `${FREE_PLAN.lifetimeRenders} image renders`,
+      'No card needed',
+    ],
+  },
+  {
+    name: STARTER.name,
+    tag: 'Research and briefs for your first few clients.',
+    paid: STARTER,
+    cta: `Start with ${STARTER.brands} brands`,
+    href: APP_URL,
+    includes: [
+      `${STARTER.brands} client brands`,
+      'Unlimited briefs, hooks and copy',
+      'Deep customer research on every brand',
+      'Learns from your ad results',
+      `${STARTER.rendersPerMonth.toLocaleString('en-US')} image renders a month`,
+    ],
+  },
+  {
+    name: AGENCY.name,
+    tag: 'Know what ad to make next, for every client.',
+    paid: AGENCY,
+    hot: true,
+    cta: `Start with ${AGENCY.brands} brands`,
+    href: APP_URL,
+    includes: [
+      `${AGENCY.brands} client brands`,
+      'Everything in Starter',
+      'Client workspaces',
+      'Guided onboarding call',
+      `${AGENCY.rendersPerMonth.toLocaleString('en-US')} image renders a month`,
+    ],
+  },
+  {
+    name: STUDIO_PLAN.name,
+    tag: 'For rosters bigger than 10 clients.',
+    flat: 'Custom',
+    cta: 'Talk to us',
+    href: CAL_URL,
+    includes: [
+      `${STUDIO_PLAN.minBrands} brands, more if you need them`,
+      'Everything in Agency',
+      'Dedicated onboarding',
+      'Direct line to the founders',
+    ],
+  },
 ];
 
-const Check = ({ children }: { children: React.ReactNode }) => (
-  <span>
-    <b className={styles.check}>✓</b>&nbsp; {children}
-  </span>
-);
+const PERIODS: { key: BillingPeriod; label: string }[] = [
+  { key: 'monthly', label: 'Monthly' },
+  { key: 'annual', label: 'Yearly' },
+];
 
-export function Pricing() {
-  const [period, setPeriod] = useState<Period>('monthly');
+function Tick() {
+  return (
+    <svg viewBox="0 0 16 16" aria-hidden="true">
+      <path d="M3.2 8.4l3 3 6.6-7" />
+    </svg>
+  );
+}
+
+/** The pricing section. On /pricing it opens the page (`standalone`), so the
+ *  headline is the page's h1 and sits closer to the nav. */
+export function Pricing({ standalone = false }: { standalone?: boolean }) {
+  const [period, setPeriod] = useState<BillingPeriod>('monthly');
+  const Heading = standalone ? 'h1' : 'h2';
 
   return (
-    <>
-      <header className={styles.hero}>
-        <h1 className={styles.h1}>One free brief. Then rates that scale with your roster.</h1>
-        <p className={styles.sub}>
-          Every plan starts the same way: 20 minutes with the founders, a real client&rsquo;s URL, and your first
-          client brief free, no card. We set you up on the call.
-        </p>
-        <div role="group" aria-label="Billing period" className={styles.toggle}>
-          {PERIODS.map((p) => (
-            <button
-              key={p.key}
-              type="button"
-              onClick={() => setPeriod(p.key)}
-              className={`${styles.segment}${period === p.key ? ` ${styles.segmentActive}` : ''}`}
-            >
-              {p.label}
-              {p.discount && <span className={styles.discount}> {p.discount}</span>}
-            </button>
-          ))}
-        </div>
-      </header>
-
-      <section className={styles.plans}>
-        <div className={styles.plan}>
-          <h2 className={styles.planName}>{FREE_PLAN.name}</h2>
-          <p className={styles.planTag}>see it work on a real client</p>
-          <p className={styles.price}>
-            $0<span className={styles.priceUnit}> free</span>
-          </p>
-          <a href={CAL_URL} className={styles.btnGhost}>
-            try it on a call <span aria-hidden="true">↗</span>
-          </a>
-          <div className={styles.features}>
-            <Check>hyper-personalized research on one real client</Check>
-            <Check>ranked concepts built from their customers and competitors</Check>
-            <Check>an exportable client-ready brief you keep</Check>
-            <Check>{FREE_PLAN.lifetimeRenders} on-brand ads that never expire</Check>
-            <Check>no card required</Check>
-          </div>
-        </div>
-
-        {PAID_PLANS.map((plan) => {
-          const isAgency = plan.id === 'agency';
-          const shown = priceFor(plan, period);
+    <section
+      className={`wrap section ${styles.pricing}${standalone ? ` ${styles.standalone}` : ''}`}
+      id="pricing"
+    >
+      <div className="sec-head">
+        <Heading className="sh">Start free, then pay as your client list grows.</Heading>
+        <p className="sub">Pay monthly, or pay yearly and save 15%.</p>
+      </div>
+      <div className={styles.bill} role="group" aria-label="Billing period">
+        {PERIODS.map((p) => (
+          <button key={p.key} type="button" aria-pressed={period === p.key} onClick={() => setPeriod(p.key)}>
+            {p.label}
+          </button>
+        ))}
+      </div>
+      <div className={styles.plans}>
+        {PLANS.map((plan) => {
+          const price = plan.paid ? priceFor(plan.paid, period) : null;
           return (
-            <div key={plan.id} className={`${styles.plan} ${isAgency ? styles.planPro : ''}`}>
-              {isAgency && (
-                <div className={styles.proHead}>
-                  <h2 className={styles.planName}>{plan.name}</h2>
-                  {/* plain text label — no pill/badge background, by explicit decision */}
-                  <span className={styles.mostPopular}>most popular</span>
-                </div>
-              )}
-              {!isAgency && <h2 className={styles.planName}>{plan.name}</h2>}
-              <p className={styles.planTag}>{isAgency ? 'scale across every client' : 'for your first clients'}</p>
+            <article key={plan.name} className={`${styles.plan}${plan.hot ? ` ${styles.hot}` : ''}`}>
+              <h3>
+                {plan.name}
+                {plan.hot && <span className={styles.popular}>Most popular</span>}
+              </h3>
+              <p className={styles.tag}>{plan.tag}</p>
               <p className={styles.price}>
-                ${shown}
-                <span className={styles.priceUnit}>/month</span>
+                <b>{price === null ? plan.flat : `$${price}`}</b>
+                {price !== null && <small>/mo</small>}
               </p>
-              {period === 'annual' && (
-                <p className={styles.billed}>${(shown * 12).toLocaleString()} billed yearly</p>
-              )}
-              <p className={styles.planTag}>
-                {plan.brands} brands - {plan.rendersPerMonth.toLocaleString()} renders/mo
+              <p className={styles.yr}>
+                {plan.paid && price !== null ? `$${Math.round(price / plan.paid.brands)} a brand` : null}
               </p>
-              <a href={CAL_URL} className={`${isAgency ? `${styles.btnBlue} ${styles.btnPro}` : styles.btnInk}`}>
-                get started on a call <span aria-hidden="true">↗</span>
+              <a className={`pill ${plan.hot ? 'pill-primary' : 'pill-outline'}`} href={plan.href}>
+                {plan.cta}
               </a>
-              <div className={styles.features}>
-                {isAgency ? (
-                  <>
-                    <Check>everything in Starter, across {plan.brands} client brands</Check>
-                    <Check>run research and briefs for your whole roster, not just your biggest accounts</Check>
-                    <Check>{plan.rendersPerMonth.toLocaleString()} on-brand ads a month to test every concept</Check>
-                    <Check>performance loop (beta): real results feed the next brief</Check>
-                    <Check>extra brand +${plan.extraBrandMonthly}/mo</Check>
-                  </>
-                ) : (
-                  <>
-                    <Check>hyper-personalized research on each client&rsquo;s customers and competitors</Check>
-                    <Check>concepts ranked by what&rsquo;s already winning in their category</Check>
-                    <Check>client-ready briefs your designers can build from same day</Check>
-                    <Check>{plan.rendersPerMonth.toLocaleString()} ads a month in each client&rsquo;s real colors, fonts and logo</Check>
-                    <Check>extra brand +${plan.extraBrandMonthly}/mo</Check>
-                  </>
-                )}
-              </div>
-            </div>
+              <ul className={styles.incl}>
+                {plan.includes.map((item) => (
+                  <li key={item}>
+                    <Tick />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </article>
           );
         })}
-
-        <div className={styles.plan}>
-          <h2 className={styles.planName}>{STUDIO_PLAN.name}</h2>
-          <p className={styles.planTag}>big rosters, one pipeline</p>
-          <p className={styles.price}>
-            Custom<span className={styles.priceUnit}> quote</span>
-          </p>
-          <a href={CAL_URL} className={styles.btnGhost}>
-            talk to us <span aria-hidden="true">↗</span>
-          </a>
-          <div className={styles.features}>
-            <Check>everything in Agency, for {STUDIO_PLAN.minBrands}+ client brands</Check>
-            <Check>{STUDIO_PLAN.rendersPerMonth.toLocaleString()}+ on-brand ads a month</Check>
-            <Check>design partner: request features, shape the roadmap</Check>
-            <Check>priority support</Check>
-          </div>
-        </div>
-      </section>
-
-      <p className={styles.fineprint}>
-        Pay yearly and get 2 months free. Every button above books the same 20-minute call; we set
-        your account up there.
-      </p>
-    </>
+      </div>
+      <p className={styles.note}>Pick a plan in the app and pay by card.</p>
+    </section>
   );
 }

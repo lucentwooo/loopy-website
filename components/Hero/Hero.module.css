@@ -1,194 +1,116 @@
-.hero {
-  position: relative;
-  overflow: hidden;
-}
-.grid {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 32px;
-  display: grid;
-  grid-template-columns: 1.05fr 0.95fr;
-  gap: 56px;
-  align-items: center;
-  min-height: 660px;
-}
-.copy {
-  position: relative;
-  padding: 64px 0;
-}
-.pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  border: 1px solid var(--border);
-  border-radius: var(--radius-full);
-  padding: 6px 14px;
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--fg-2);
-  background: var(--bg-raised);
-}
-.h1 {
-  margin: 24px 0 0;
-  font-size: clamp(42px, 4.8vw, 68px);
-  font-weight: 700;
-  line-height: 1.04;
-  letter-spacing: var(--track-display);
-  text-wrap: balance;
-}
-.h1Accent {
-  color: var(--accent);
-}
-.sub {
-  margin: 24px 0 0;
-  max-width: 520px;
-  font-size: 20px;
-  line-height: 1.5;
-  color: var(--fg-2);
-  text-wrap: pretty;
-}
-.ctaRow {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  flex-wrap: wrap;
-  margin-top: 32px;
-}
-.appCta {
-  white-space: nowrap;
-  text-decoration: none;
-  color: var(--fg);
-  font-weight: 600;
-  font-size: 17px;
-  padding: 14px 25px;
-  border: 1px solid var(--fg);
-  border-radius: var(--radius-btn);
-  transition: background var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease);
-}
-.appCta:hover {
-  background: var(--fg);
-  color: #fff;
-}
-.cta {
-  white-space: nowrap;
-  text-decoration: none;
-  background: var(--accent);
-  color: #fff;
-  font-weight: 600;
-  font-size: 17px;
-  padding: 15px 26px;
-  border-radius: var(--radius-btn);
-  transition: background var(--dur-fast) var(--ease);
-}
-.cta:hover {
-  background: var(--accent-hover);
-}
-.fineprint {
-  margin: 14px 0 0;
-  font-size: 14px;
-  color: var(--fg-3);
-}
-.fineprint b {
-  color: var(--fg);
-  font-weight: 600;
+/* Hero: headline, two lines, CTAs, trust row, then the swipe wall with the
+   flow card floating on it. */
+.display { font-size: 88px; line-height: 0.98; font-weight: 500; letter-spacing: -0.047em; }
+
+.hero { position: relative; z-index: 1; padding-top: 84px; text-align: center; }
+.hero .display { max-width: 1120px; margin: 0 auto; }
+.lines { margin: 32px auto 0; max-width: 900px; display: flex; flex-direction: column; gap: 6px; }
+.lines p { font-size: 19px; line-height: 30px; color: var(--fg-2); text-wrap: balance; }
+.hero :global(.ctas) { margin-top: 40px; }
+.trust { margin-top: 26px; display: flex; justify-content: center; flex-wrap: wrap; gap: 8px 26px; font-size: 14px; line-height: 20px; color: var(--fg-2); }
+.trust li { display: inline-flex; align-items: center; gap: 8px; }
+.ck { width: 16px; height: 16px; flex-shrink: 0; fill: var(--fg); }
+
+/* Swipe wall */
+.wall { position: relative; }
+.wallBg { position: absolute; left: 0; right: 0; top: 0; height: var(--wh); overflow: hidden; }
+.wallCols { position: absolute; top: 0; left: 50%; transform: translateX(-50%); display: flex; gap: var(--gap); width: max-content; }
+.col { width: var(--cw); flex: none; display: flex; flex-direction: column; gap: var(--gap); margin-top: calc(var(--o, 0px) * var(--k, 1)); }
+/* height: auto lets the ratio class size the tile over the width/height attributes next/image writes. */
+.ad { width: 100%; height: auto; object-fit: cover; border-radius: 10px; background: var(--bg-sunken); }
+.r916 { aspect-ratio: 9 / 16; }
+.r11 { aspect-ratio: 1 / 1; }
+.r45 { aspect-ratio: 4 / 5; }
+.r34 { aspect-ratio: 3 / 4; }
+.fade { position: absolute; inset: 0; pointer-events: none;
+  background:
+    linear-gradient(to bottom, #fff 0, rgba(255,255,255,0) var(--ft), rgba(255,255,255,0) calc(100% - var(--fb)), #fff 100%),
+    linear-gradient(to right, #fff 0, rgba(255,255,255,0) var(--fs), rgba(255,255,255,0) calc(100% - var(--fs)), #fff 100%); }
+/* Every column starts above the wall (negative --o) and runs past its bottom, so no hole shows
+   anywhere except inside the edge fades. */
+.wallHero { --cw: 184px; --gap: 16px; --ft: 150px; --fb: 150px; --fs: 96px; --wh: 700px; z-index: 1; margin-top: 48px; padding: 124px 0 182px; }
+.float { position: relative; z-index: 2; margin: 0 auto; width: min(1176px, calc(100% - 48px)); }
+
+/* Flow card: the whole job in one picture, left to right. Not app UI; every word and image is real
+   Svens Island data. */
+.flow { position: relative; isolation: isolate; display: flex; align-items: flex-start; text-align: left; padding: 26px 28px 30px; border-radius: 28px; background: var(--bg-sunken); overflow: hidden;
+  box-shadow: 0 0 0 1px rgba(14, 17, 22, 0.05), 0 56px 100px -44px rgba(14, 17, 22, 0.6), 0 8px 24px -12px rgba(14, 17, 22, 0.16); }
+.flow::before { content: ""; position: absolute; inset: 0; z-index: -1; background:
+    radial-gradient(30% 70% at 8% 18%, rgba(123, 97, 255, 0.26), rgba(123, 97, 255, 0) 72%),
+    radial-gradient(28% 60% at 46% 108%, rgba(20, 190, 147, 0.2), rgba(20, 190, 147, 0) 72%),
+    radial-gradient(30% 70% at 96% 24%, rgba(255, 106, 77, 0.24), rgba(255, 106, 77, 0) 72%); }
+.step { flex: none; display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+.s1 { width: 150px; }
+.s2 { width: 290px; }
+.s3 { width: 262px; }
+.s4 { flex: 1; }
+.lab { font-size: 14px; line-height: 20px; font-weight: 500; letter-spacing: -0.006em; color: var(--fg-2); white-space: nowrap; }
+.con { flex: none; width: 40px; height: 12px; margin-top: 70px; }
+.con path { fill: none; stroke: #9aa0ac; stroke-width: 1.3; stroke-linecap: round; stroke-linejoin: round; }
+.card { background: #fff; border-radius: 16px; box-shadow: 0 1px 2px rgba(14, 17, 22, 0.05), 0 18px 34px -24px rgba(14, 17, 22, 0.4); }
+.client { padding: 18px 16px 15px; display: flex; flex-direction: column; gap: 9px; }
+.client img { width: 112px; height: auto; }
+.client span { font-size: 13.5px; line-height: 18px; color: var(--fg-2); letter-spacing: -0.005em; }
+.quotes { display: flex; flex-direction: column; gap: 12px; }
+.q { padding: 14px 18px 17px; }
+.q figcaption { display: flex; align-items: center; gap: 8px; font-size: 13.5px; line-height: 20px; font-weight: 500; color: var(--fg-2); }
+.appic { width: 22px; height: 22px; border-radius: 22.5%; flex-shrink: 0; }
+.q blockquote { margin-top: 10px; font-size: 16.5px; line-height: 24px; letter-spacing: -0.016em; color: var(--fg); text-wrap: pretty; }
+.ideas { display: flex; flex-direction: column; gap: 8px; }
+.idea { position: relative; padding: 12px 16px 14px; border-radius: 14px; background: rgba(255, 255, 255, 0.56); }
+.idea.on { background: #fff; box-shadow: 0 0 0 1.5px var(--fg), 0 18px 34px -22px rgba(14, 17, 22, 0.45); }
+.meta { display: flex; align-items: center; gap: 8px; font-size: 13px; line-height: 22px; color: var(--fg-2); }
+.idea b { display: block; margin-top: 6px; font-size: 16px; line-height: 22px; font-weight: 550; letter-spacing: -0.018em; color: var(--fg); text-wrap: balance; }
+.idea:not(.on) b { color: var(--fg-2); font-weight: 500; }
+.pick { position: absolute; right: 12px; top: 12px; width: 22px; height: 22px; }
+.brief { padding: 16px 16px 16px; }
+.brief > p { font-size: 19px; line-height: 25px; font-weight: 600; letter-spacing: -0.024em; color: var(--fg); text-wrap: balance; }
+.briefRow { margin-top: 14px; display: flex; gap: 14px; align-items: flex-start; }
+.ad2 { position: relative; flex: none; width: 104px; }
+.ad2 img { width: 104px; height: 185px; object-fit: cover; border-radius: 10px; }
+.note { display: flex; gap: 9px; font-size: 14px; line-height: 20px; color: var(--fg-2); text-wrap: pretty; }
+.ad2 :global(.pin) { position: absolute; transform: translate(-50%, -50%); }
+
+@media (max-width: 1180px) {
+  .display { font-size: 72px; text-wrap: balance; }
+  .display br { display: none; }
+
+  /* The flow card stacks top to bottom once the four parts no longer fit side by side. */
+  .wallHero { padding-bottom: 0; }
+  .float { width: min(600px, calc(100% - 32px)); }
+  .flow { flex-direction: column; align-items: stretch; padding: 22px 20px 22px; }
+  .s1, .s2, .s3, .s4 { width: auto; flex: none; }
+  .client { flex-direction: row; align-items: center; justify-content: space-between; gap: 12px; padding: 14px 16px; }
+  .con { width: 32px; margin: 16px 0 16px 6px; transform: rotate(90deg); transform-origin: 16px 6px; }
 }
 
-@media (min-width: 761px) and (max-width: 1180px) {
-  .cta,
-  .appCta {
-    font-size: 15px;
-    padding-inline: 18px;
-  }
+@media (max-width: 960px) {
+  .lines p { font-size: 17px; line-height: 26px; }
 }
 
-/* --- the ad wall --- */
-.adWall {
-  position: relative;
-  height: 660px;
-  overflow: hidden;
-  -webkit-mask-image: linear-gradient(to bottom, transparent, #000 10%, #000 90%, transparent);
-  mask-image: linear-gradient(to bottom, transparent, #000 10%, #000 90%, transparent);
-}
-.wallGrid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
-  height: 100%;
-}
-@keyframes driftUp {
-  from {
-    transform: translateY(0);
-  }
-  to {
-    transform: translateY(-50%);
-  }
-}
-.colUp,
-.colDown {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-.colUp {
-  animation: driftUp 58s linear infinite;
-}
-.colDown {
-  animation: driftUp 74s linear infinite reverse;
-}
-.colUp:hover,
-.colDown:hover {
-  animation-play-state: paused;
-}
-.wallAd {
-  width: 100%;
-  height: auto;
-  border-radius: var(--radius-ad);
-  border: 1px solid var(--border-card);
-  display: block;
-}
-.demoLabel {
-  position: absolute;
-  left: 12px;
-  bottom: 18px;
-  background: var(--bg-ink);
-  color: #fff;
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.02em;
-  padding: 6px 12px;
-  border-radius: var(--radius-full);
-}
+@media (max-width: 720px) {
+  .hero { padding-top: 44px; }
+  .display { font-size: 44px; line-height: 46px; letter-spacing: -0.042em; text-wrap: balance; }
+  .display br { display: none; }
+  .lines { margin-top: 20px; gap: 8px; }
+  .lines p { font-size: 17px; line-height: 26px; }
+  .hero :global(.ctas) { margin-top: 28px; }
+  .trust { margin-top: 20px; flex-direction: column; align-items: center; gap: 8px; font-size: 14px; }
 
-@media (prefers-reduced-motion: reduce) {
-  .colUp,
-  .colDown {
-    animation-play-state: paused;
-  }
-}
-
-@media (max-width: 760px) {
-  .grid {
-    grid-template-columns: 1fr;
-    gap: 0;
-    min-height: 0;
-    padding: 0 24px;
-  }
-  .copy {
-    padding: 44px 0 36px;
-  }
-  .pill {
-    font-size: 14px;
-  }
-  .h1 {
-    font-size: 36px;
-  }
-  .sub {
-    font-size: 17px;
-  }
-  .adWall {
-    height: 420px;
-  }
-  .demoLabel {
-    font-size: 14px;
-  }
+  /* The wall fades out behind the card; the card itself keeps its text at reading size. */
+  .wallHero { --cw: 118px; --gap: 10px; --ft: 48px; --fb: 200px; --fs: 24px; --wh: 520px; --k: 0.6; margin-top: 36px; padding-top: 64px; }
+  .float { width: calc(100% - 32px); }
+  .flow { padding: 18px 14px 16px; border-radius: 22px; }
+  .step { gap: 10px; }
+  .lab { font-size: 13.5px; padding-left: 2px; }
+  .con { margin: 13px 0 13px 4px; }
+  .q2 { display: none; }
+  .q { padding: 13px 16px 15px; }
+  .q blockquote { font-size: 16px; line-height: 23px; }
+  .idea { padding: 11px 14px 13px; }
+  .idea b { font-size: 15.5px; line-height: 21px; }
+  .brief { padding: 14px; }
+  .brief > p { font-size: 18px; line-height: 24px; }
+  .ad2, .ad2 img { width: 96px; }
+  .ad2 img { height: 171px; }
 }
