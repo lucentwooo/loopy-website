@@ -8,7 +8,7 @@ signups, not add-to-carts.
 
 - **Next.js** (App Router) + **TypeScript**
 - **CSS Modules** over a shared design-token layer (`styles/tokens.css`)
-- **DM Sans** via `next/font`
+- **Inter** (variable font) via `next/font`
 - **Vitest** + React Testing Library for logic/behavior tests
 - Static deploy on **Vercel** (no backend)
 
