@@ -187,7 +187,7 @@ export function HowItWorks() {
                 <h4>
                   Tried everything? This is different. <span className={styles.top}>Top pick</span>
                 </h4>
-                <p className={styles.why}>ranked #1: strong objection · addresses skepticism · product-aware fit</p>
+                <p className={styles.why}>ranked #1: strong objection - addresses skepticism - product-aware fit</p>
               </Strip>
               <Strip className={styles.s2} rank={2} angle="Pain point" angleClass="a-pain" stage="Product aware">
                 <h4>Burning hands? Relief is here.</h4>
@@ -212,7 +212,7 @@ export function HowItWorks() {
               <div className={styles.docBack} aria-hidden="true" />
               <article className={`${styles.doc} ${styles.paper}`}>
                 <header className={styles.docH}>
-                  <b>Svens Island · 5 statics</b>
+                  <b>Svens Island - 5 statics</b>
                   <span>
                     <span className={styles.stg}>Problem aware</span>
                     <span className="ang a-pain">Pain point</span>

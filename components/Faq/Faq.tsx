@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react';
+import { ANNUAL_SAVINGS_PCT, PAID_PLANS } from '@/lib/billing-catalog';
 import styles from './Faq.module.css';
 
 export interface FaqItem {
@@ -30,7 +31,7 @@ const FAQS: FaqItem[] = [
   },
   {
     q: 'What does it cost?',
-    a: 'Your first client brief is free, and you don’t need a card. After that, plans start at $249 a month, and paying yearly saves 15%.',
+    a: `Your first client brief is free, and you don’t need a card. After that, plans start at $${PAID_PLANS[0].monthlyPrice} a month, and paying yearly saves ${ANNUAL_SAVINGS_PCT}%.`,
   },
 ];
 

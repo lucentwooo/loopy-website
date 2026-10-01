@@ -9,6 +9,9 @@ export const PERIOD_MULTIPLIER: Record<BillingPeriod, number> = {
   annual: 0.85, // pay yearly, save 15% (the app's TERM_DISCOUNT.annual)
 };
 
+/** The yearly saving as a whole percent, for copy ("save 15%"). */
+export const ANNUAL_SAVINGS_PCT = Math.round((1 - PERIOD_MULTIPLIER.annual) * 100);
+
 export interface PaidPlan {
   id: 'starter' | 'agency';
   name: string;

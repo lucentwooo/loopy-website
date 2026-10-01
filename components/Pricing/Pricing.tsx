@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { APP_URL, CAL_URL } from '@/lib/site';
-import { FREE_PLAN, PAID_PLANS, STUDIO_PLAN, priceFor, type BillingPeriod, type PaidPlan } from '@/lib/billing-catalog';
+import { ANNUAL_SAVINGS_PCT, FREE_PLAN, PAID_PLANS, STUDIO_PLAN, priceFor, type BillingPeriod, type PaidPlan } from '@/lib/billing-catalog';
 import styles from './Pricing.module.css';
 
 const [STARTER, AGENCY] = PAID_PLANS;
@@ -104,7 +104,7 @@ export function Pricing({ standalone = false }: { standalone?: boolean }) {
     >
       <div className="sec-head">
         <Heading className="sh">Start free, then pay as your client list grows.</Heading>
-        <p className="sub">Pay monthly, or pay yearly and save 15%.</p>
+        <p className="sub">Pay monthly, or pay yearly and save {ANNUAL_SAVINGS_PCT}%.</p>
       </div>
       <div className={styles.bill} role="group" aria-label="Billing period">
         {PERIODS.map((p) => (
