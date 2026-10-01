@@ -1,0 +1,22 @@
+/* The loop (beta): what ran well, each lesson, the next brief, looping back. */
+.loop { text-align: center; }
+.fig { position: relative; width: 660px; height: 130px; margin: 60px auto 0; }
+.lines { position: absolute; inset: 0; }
+.node { position: absolute; top: 0; left: var(--x); width: 210px; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; text-align: center; }
+.node b { width: 11px; height: 11px; border-radius: 50%; box-shadow: 0 0 0 6px var(--bg); }
+.node strong { margin-top: 14px; font-size: 15px; line-height: 20px; font-weight: 500; color: var(--fg); }
+.node small { margin-top: 3px; font-size: 13px; line-height: 18px; color: var(--fg-3); white-space: nowrap; }
+.beta { display: inline-flex; height: 26px; padding: 0 11px; align-items: center; border: 1px solid var(--btn-border); border-radius: var(--radius-full); font-size: 13px; font-weight: 500; color: var(--fg-2); }
+.loop :global(.sh) { margin-top: 20px; }
+.loop :global(.sub) { max-width: 600px; margin: 22px auto 0; }
+
+@media (max-width: 720px) {
+  .fig { width: fit-content; max-width: 100%; height: auto; margin: 44px auto 0; padding-left: 30px; display: flex; flex-direction: column; gap: 26px; }
+  .fig::before { content: ''; position: absolute; left: 35.5px; top: 10px; bottom: 10px; width: 1px; background: var(--line); }
+  /* content-box, as in the mockup, so the dashed return arc is 22px plus its border */
+  .fig::after { content: ''; position: absolute; left: 8px; top: 5px; bottom: 5px; width: 22px; border: 1px dashed var(--line); border-right: 0; border-radius: 12px 0 0 12px; box-sizing: content-box; }
+  .lines { display: none; }
+  .node { position: relative; left: auto; transform: none; width: auto; padding-left: 26px; align-items: flex-start; text-align: left; }
+  .node b { position: absolute; left: 0; top: 4.5px; }
+  .node strong { margin-top: 0; }
+}

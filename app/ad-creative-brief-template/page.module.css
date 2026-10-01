@@ -320,7 +320,7 @@
   margin-top: 30px;
   background: #ffffff;
   border: 1px solid var(--border-card);
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-xl);
   box-shadow: var(--shadow-featured);
   overflow: hidden;
 }
@@ -615,7 +615,7 @@
   overflow: hidden;
   margin-top: 104px;
   background: var(--bg-ink);
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-xl);
   padding: clamp(40px, 5vw, 72px);
   box-shadow: var(--shadow-dark);
 }

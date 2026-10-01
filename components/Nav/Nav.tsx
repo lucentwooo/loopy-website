@@ -1,35 +1,60 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { APP_URL, CAL_URL } from '@/lib/site';
+import { APP_URL } from '@/lib/site';
 import styles from './Nav.module.css';
 
-export function Nav({ page = 'landing' }: { page?: 'landing' | 'pricing' | 'content' }) {
-  const onLanding = page === 'landing';
-  const prefix = onLanding ? '' : '/';
+type Page = 'landing' | 'pricing' | 'content';
+
+/** Section links resolve on the landing page; elsewhere they point back to it.
+ *  Pricing and FAQ stay on the page when it has those sections. */
+function navLinks(page: Page) {
+  const home = page === 'landing' ? '' : '/';
+  return [
+    { label: 'How it works', href: `${home}#how` },
+    { label: 'Inside a brief', href: `${home}#brief` },
+    { label: 'Pricing', href: page === 'content' ? '/pricing' : '#pricing' },
+    { label: 'FAQ', href: '#faq' },
+  ];
+}
+
+export function Nav({ page = 'landing' }: { page?: Page }) {
+  const links = navLinks(page);
 
   return (
-    <nav className={styles.nav}>
-      <div className={styles.inner}>
-        <Link href={onLanding ? '#top' : '/'} aria-label="Loopy home" className={styles.brand}>
-          <Image src="/loopy-logo.png" alt="Loopy" width={65} height={26} priority className={styles.logo} />
-        </Link>
-        <div className={styles.links}>
-          <a href={`${prefix}#how`}>how it works</a>
-          <a href={`${prefix}#batch`}>the output</a>
-          <Link href="/pricing" className={page === 'pricing' ? styles.active : undefined}>
-            pricing
+    <header className={`wrap ${styles.nav}`}>
+      <Link className={styles.logo} href="/" aria-label="Loopy home">
+        <Image src="/loopy-logo.png" alt="Loopy" width={70} height={28} loading="eager" />
+      </Link>
+      <nav className={styles.links} aria-label="Main">
+        {links.map((l) => (
+          <Link key={l.label} href={l.href}>
+            {l.label}
           </Link>
-          <a href="#faq">faq</a>
-        </div>
-        <div className={styles.actions}>
-          <a className={styles.appCta} href={APP_URL}>
-            try the platform
-          </a>
-          <a className={styles.cta} href={CAL_URL}>
-            book <span className={styles.wide}>intro </span>call <span aria-hidden="true">↗</span>
-          </a>
-        </div>
+        ))}
+      </nav>
+      <div className={styles.right}>
+        <a className={styles.signin} href={APP_URL}>
+          Sign in
+        </a>
+        <a className="pill pill-outline pill-sm" href={APP_URL}>
+          Try it free
+        </a>
+        {/* Phone menu: native details/summary, no client JS. */}
+        <details className={styles.menu}>
+          <summary className={styles.menuBtn} aria-label="Open menu">
+            <i />
+            <i />
+          </summary>
+          <div className={styles.panel}>
+            {links.map((l) => (
+              <Link key={l.label} href={l.href}>
+                {l.label}
+              </Link>
+            ))}
+            <a href={APP_URL}>Try it free</a>
+          </div>
+        </details>
       </div>
-    </nav>
+    </header>
   );
 }
