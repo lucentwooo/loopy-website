@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { APP_URL } from '@/lib/site';
+import { AppLink } from '@/components/AppLink';
 import styles from './Nav.module.css';
 
 type Page = 'landing' | 'pricing' | 'content';
@@ -36,9 +37,7 @@ export function Nav({ page = 'landing' }: { page?: Page }) {
         <a className={styles.signin} href={APP_URL}>
           Sign in
         </a>
-        <a className="pill pill-outline pill-sm" href={APP_URL}>
-          Try it free
-        </a>
+        <AppLink className="pill pill-outline pill-sm">Try it free</AppLink>
         {/* Phone menu: native details/summary, no client JS. */}
         <details className={styles.menu}>
           <summary className={styles.menuBtn} aria-label="Open menu">
@@ -51,7 +50,7 @@ export function Nav({ page = 'landing' }: { page?: Page }) {
                 {l.label}
               </Link>
             ))}
-            <a href={APP_URL}>Try it free</a>
+            <AppLink>Try it free</AppLink>
           </div>
         </details>
       </div>

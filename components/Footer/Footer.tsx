@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { AppLink } from '@/components/AppLink';
 import { APP_URL, CAL_URL } from '@/lib/site';
 import styles from './Footer.module.css';
 
@@ -17,7 +18,7 @@ export function Footer({ page = 'landing' }: { page?: 'landing' | 'pricing' | 'c
         <div className={styles.cols}>
           <div>
             <h4>Product</h4>
-            <a href={APP_URL}>Try it free</a>
+            <AppLink>Try it free</AppLink>
             <Link href={`${home}#how`}>How it works</Link>
             <Link href={page === 'content' ? '/pricing' : '#pricing'}>Pricing</Link>
             <Link href="/ad-creative-brief-template">Ad brief template</Link>

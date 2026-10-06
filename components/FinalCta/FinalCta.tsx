@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import { FINAL_PEEK } from '@/lib/creatives';
-import { APP_URL, CAL_URL } from '@/lib/site';
+import { CAL_URL } from '@/lib/site';
+import { AppLink } from '@/components/AppLink';
 import styles from './FinalCta.module.css';
 
 export function FinalCta() {
@@ -13,9 +14,7 @@ export function FinalCta() {
           <a className="pill pill-primary" href={CAL_URL}>
             Book a demo
           </a>
-          <a className="pill pill-outline" href={APP_URL}>
-            Try it free
-          </a>
+          <AppLink className="pill pill-outline">Try it free</AppLink>
         </div>
         <div className={styles.peek} aria-hidden="true">
           {FINAL_PEEK.map((src) => (

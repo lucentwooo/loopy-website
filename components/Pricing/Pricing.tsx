@@ -1,7 +1,8 @@
 'use client';
 
 import { useState } from 'react';
-import { APP_URL, CAL_URL } from '@/lib/site';
+import { AppLink } from '@/components/AppLink';
+import { CAL_URL } from '@/lib/site';
 import { ANNUAL_SAVINGS_PCT, FREE_PLAN, PAID_PLANS, STUDIO_PLAN, priceFor, type BillingPeriod, type PaidPlan } from '@/lib/billing-catalog';
 import styles from './Pricing.module.css';
 
@@ -11,7 +12,8 @@ type Plan = {
   name: string;
   tag: string;
   cta: string;
-  href: string;
+  /** null = the self-serve app link (swapped to the free brief on phones). */
+  href: string | null;
   hot?: boolean;
   /** Paid plans show a price per month and per brand; the rest show `flat`. */
   paid?: PaidPlan;
@@ -25,7 +27,7 @@ const PLANS: Plan[] = [
     tag: 'See it work on your real brand.',
     flat: '$0',
     cta: 'Start free',
-    href: APP_URL,
+    href: null,
     includes: [
       `${FREE_PLAN.brands} brand`,
       '1 full brief: research, hooks, copy',
@@ -39,7 +41,7 @@ const PLANS: Plan[] = [
     tag: 'Research and briefs for your first few clients.',
     paid: STARTER,
     cta: `Start with ${STARTER.brands} brands`,
-    href: APP_URL,
+    href: null,
     includes: [
       `${STARTER.brands} client brands`,
       'Unlimited briefs, hooks and copy',
@@ -54,7 +56,7 @@ const PLANS: Plan[] = [
     paid: AGENCY,
     hot: true,
     cta: `Start with ${AGENCY.brands} brands`,
-    href: APP_URL,
+    href: null,
     includes: [
       `${AGENCY.brands} client brands`,
       'Everything in Starter',
@@ -130,9 +132,13 @@ export function Pricing({ standalone = false }: { standalone?: boolean }) {
               <p className={styles.yr}>
                 {plan.paid && price !== null ? `$${Math.round(price / plan.paid.brands)} a brand` : null}
               </p>
-              <a className={`pill ${plan.hot ? 'pill-primary' : 'pill-outline'}`} href={plan.href}>
-                {plan.cta}
-              </a>
+              {plan.href === null ? (
+                <AppLink className={`pill ${plan.hot ? 'pill-primary' : 'pill-outline'}`}>{plan.cta}</AppLink>
+              ) : (
+                <a className={`pill ${plan.hot ? 'pill-primary' : 'pill-outline'}`} href={plan.href}>
+                  {plan.cta}
+                </a>
+              )}
               <ul className={styles.incl}>
                 {plan.includes.map((item) => (
                   <li key={item}>
