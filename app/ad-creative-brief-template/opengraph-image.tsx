@@ -1,11 +1,11 @@
 import { ImageResponse } from 'next/og';
 
-export const alt = 'Ad creative brief template for Meta ads - free, copy-paste, from Loopy';
+export const alt = 'Meta ads creative brief template: free, research-first, from Loopy';
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
 
-// Page-specific OG card: same white-paper / ink / one-blue system as the root
-// card, but the headline is the resource, not the product pitch.
+// Page-specific OG card in DS v2: white canvas, gray tile, ink text, one blue mark.
+// Inter is not loaded here, so this keeps the same system-font loading as before.
 export default function OpengraphImage() {
   return new ImageResponse(
     (
@@ -17,52 +17,55 @@ export default function OpengraphImage() {
           flexDirection: 'column',
           justifyContent: 'space-between',
           background: '#ffffff',
-          padding: '72px 80px',
+          padding: '56px 56px',
           fontFamily: 'sans-serif',
         }}
       >
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <div style={{ display: 'flex', fontSize: 34, fontWeight: 700, color: '#1c42e6', letterSpacing: '-0.03em' }}>
-            loopy
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'space-between',
+            flex: 1,
+            background: '#f1f3f7',
+            borderRadius: 40,
+            padding: '56px 64px',
+          }}
+        >
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <div style={{ display: 'flex', fontSize: 34, fontWeight: 700, color: '#1c42e6', letterSpacing: '-0.03em' }}>
+              loopy
+            </div>
+            <div
+              style={{
+                display: 'flex',
+                fontSize: 22,
+                fontWeight: 600,
+                color: '#3c414c',
+                background: '#ffffff',
+                borderRadius: 999,
+                padding: '8px 20px',
+              }}
+            >
+              Free template
+            </div>
           </div>
-          <div
-            style={{
-              display: 'flex',
-              fontSize: 22,
-              fontWeight: 600,
-              color: '#1c42e6',
-              background: '#eaeeff',
-              border: '1px solid #cfd9ff',
-              borderRadius: 999,
-              padding: '8px 18px',
-              letterSpacing: '0.06em',
-              textTransform: 'uppercase',
-            }}
-          >
-            free template
-          </div>
-        </div>
-        <div style={{ display: 'flex', flexDirection: 'column' }}>
           <div
             style={{
               display: 'flex',
               flexDirection: 'column',
-              fontSize: 76,
+              fontSize: 72,
               fontWeight: 600,
               color: '#0e1116',
-              letterSpacing: '-0.03em',
+              letterSpacing: '-0.035em',
               lineHeight: 1.05,
             }}
           >
-            <div>The ad creative brief template</div>
-            <div style={{ color: '#1c42e6' }}>agencies actually use.</div>
+            <div>Meta Ads Creative Brief Template: Free, Research-First</div>
           </div>
-          <div style={{ marginTop: 28, fontSize: 30, color: '#3c414c', maxWidth: 980, lineHeight: 1.35 }}>
-            Brand header, ranked concept blocks, KEEP/SWAP visual notes and three copy variants. Built for Meta ads.
+          <div style={{ display: 'flex', fontSize: 26, color: '#3c414c' }}>
+            tryloopy.io/ad-creative-brief-template
           </div>
-        </div>
-        <div style={{ display: 'flex', alignItems: 'center', fontSize: 26, color: '#6b7280' }}>
-          tryloopy.io/ad-creative-brief-template - copy-paste or download
         </div>
       </div>
     ),

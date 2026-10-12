@@ -1,0 +1,17 @@
+/* Reddit market research tool page. Everything shared comes from ../ad-creative-brief-template/page.module.css. */
+
+.fit { margin-top: 32px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.fitTile { padding: 26px 24px 28px; border-radius: 20px; background: var(--bg-sunken); }
+.fitTile h3 { font-size: 22px; line-height: 28px; font-weight: 500; letter-spacing: -0.025em; color: var(--fg); }
+.fitTile p { margin-top: 10px; font-size: 16px; line-height: 26px; color: var(--fg-2); text-wrap: pretty; }
+
+.steps { margin-top: 28px; border-top: 1px solid var(--border-hairline); }
+
+/* Three steps: the quotes column spans both rows so the idea and brief stack beside it. */
+@media (min-width: 1181px) {
+  .tall { grid-row: span 2; }
+}
+
+@media (max-width: 760px) {
+  .fit { grid-template-columns: minmax(0, 1fr); }
+}
