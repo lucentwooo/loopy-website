@@ -133,9 +133,19 @@ export function TemplateTabs() {
       </div>
 
       <div className={styles.tplCard}>
-        <div role="tabpanel" id={`brief-panel-${active.key}`} aria-labelledby={`brief-tab-${active.key}`} tabIndex={0}>
-          <pre className={styles.tplText}>{active.text}</pre>
-        </div>
+        {/* All three panels stay in the HTML so search engines and AI crawlers read the whole template. */}
+        {TABS.map((t) => (
+          <div
+            key={t.key}
+            role="tabpanel"
+            id={`brief-panel-${t.key}`}
+            aria-labelledby={`brief-tab-${t.key}`}
+            tabIndex={0}
+            hidden={tab !== t.key}
+          >
+            <pre className={styles.tplText}>{t.text}</pre>
+          </div>
+        ))}
         <div className={styles.tplActions}>
           <button type="button" onClick={copy} className="pill pill-outline pill-sm" aria-live="polite">
             {copied ? 'Copied' : 'Copy this part'}

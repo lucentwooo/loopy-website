@@ -40,7 +40,7 @@ const STEPS: { name: string; body: ReactNode }[] = [
     name: 'Turns it into ranked ad ideas and a brief',
     body: (
       <>
-        Each idea is written for an awareness stage and links back to the quotes it came from, laid out like our{' '}
+        Each idea is written for an <Link href="/#brief">awareness stage</Link> and links back to the quotes it came from, laid out like our{' '}
         <Link href="/ad-creative-brief-template">creative brief template</Link>.
       </>
     ),
@@ -121,7 +121,7 @@ const jsonLd = {
 const TOC = [
   ['why-reddit', 'What Reddit tells you that surveys don’t'],
   ['how', 'How Loopy does Reddit research'],
-  ['example', 'A real example'],
+  ['example', 'From Reddit quotes to a brief'],
   ['by-hand', 'How to do Reddit market research by hand'],
   ['fit', 'Who it’s for, and who it isn’t'],
   ['faq', 'FAQ'],
@@ -269,12 +269,13 @@ export default function RedditResearchPage() {
               <Steps items={STEPS} />
               <p className={shared.body}>
                 Reddit is one source of several. Loopy also reads product reviews and TikTok and YouTube comments, so
-                you can see when the same complaint turns up in more than one place.
+                you can see when the same complaint turns up in more than one place. The homepage walks through{' '}
+                <Link href="/#how">the full research process</Link>.
               </p>
             </section>
 
             <section id="example" className={shared.section}>
-              <h2>A real example</h2>
+              <h2>A real example, from Reddit quotes to a brief</h2>
               <p className={shared.body}>
                 Real quotes and output from Loopy’s research for Svens Island, an Australian brand that makes natural
                 cream for eczema-prone skin.
@@ -330,6 +331,10 @@ export default function RedditResearchPage() {
 
             <section id="by-hand" className={shared.section}>
               <h2>How to do Reddit market research by hand</h2>
+              <p className={shared.body}>
+                Search for the problem in your customer’s words, find the subreddits where it keeps coming up, copy the
+                exact phrases with their links, group them, and turn the patterns into ad angles. Here is each step.
+              </p>
               <Steps items={BY_HAND} />
               <p className={shared.body}>
                 This works, but it takes hours per client and you have to repeat it every time you brief. Loopy runs
@@ -346,8 +351,8 @@ export default function RedditResearchPage() {
                   <h3>Built for</h3>
                   <p>
                     Agencies and in-house teams running Meta ads for e-commerce brands who want angles and briefs built
-                    on what buyers really say. If you used GummySearch to find customer pain points for ads, Loopy
-                    covers that part.
+                    on what buyers really say. If you used GummySearch to find customer pain points for ads,{' '}
+                    <Link href="/">Loopy</Link> covers that part.
                   </p>
                 </div>
                 <div className={styles.fitTile}>
@@ -367,8 +372,8 @@ export default function RedditResearchPage() {
           <div className={shared.cta}>
             <h2 className="sh">See what your client’s customers are saying on Reddit.</h2>
             <p className="sub">
-              Start free with Limited research, or book a 20-minute demo and we’ll build a brief live on one of your
-              clients.
+              Start free with Limited research, compare <Link href="/pricing">plans and pricing</Link>, or book a
+              20-minute demo and we’ll build a brief live on one of your clients.
             </p>
             <div className="ctas">
               <a className="pill pill-primary" href={APP_URL}>
@@ -381,7 +386,7 @@ export default function RedditResearchPage() {
           </div>
         </section>
 
-        <Faq title="Reddit research questions." items={FAQS} />
+        <Faq title="Questions about Reddit market research." items={FAQS} />
       </main>
       <Footer page="content" />
     </>

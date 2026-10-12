@@ -58,7 +58,12 @@ const STEPS: { name: string; body: ReactNode }[] = [
   },
   {
     name: 'Turn it into ads if you want',
-    body: 'A free Loopy account turns the concepts into static ad images, ready for Ads Manager.',
+    body: (
+      <>
+        A free Loopy account turns the concepts into static ad images, ready for Ads Manager.{' '}
+        <Link href="/pricing">Paid plans</Link> add deeper research across more sources.
+      </>
+    ),
   },
 ];
 
@@ -129,8 +134,8 @@ const jsonLd = {
 };
 
 const TOC = [
-  ['what-you-get', 'What you get'],
-  ['how', 'How it works'],
+  ['what-you-get', 'What the free brief includes'],
+  ['how', 'How the generator works'],
   ['compare', 'Form generators vs a research-first brief'],
   ['faq', 'FAQ'],
 ] as const;
@@ -234,7 +239,12 @@ export default function CreativeBriefGeneratorPage() {
 
           <article className={shared.article}>
             <section id="what-you-get" className={shared.section}>
-              <h2>What you get</h2>
+              <h2>What the free brief includes</h2>
+              <p className={shared.body}>
+                The free brief gives you three ad concepts for one product, with three headlines and body copy for each
+                and the customer quotes behind them. It is a shorter version of{' '}
+                <Link href="/#brief">the full brief Loopy writes in the app</Link>.
+              </p>
               <div className={styles.tiles}>
                 {TILES.map((t) => (
                   <div key={t.title} className={styles.tile}>
@@ -246,7 +256,7 @@ export default function CreativeBriefGeneratorPage() {
             </section>
 
             <section id="how" className={shared.section}>
-              <h2>How it works</h2>
+              <h2>How the brief generator works</h2>
               <ol className={`${shared.specList} ${styles.steps}`}>
                 {STEPS.map((s, i) => (
                   <li key={s.name}>
@@ -265,7 +275,8 @@ export default function CreativeBriefGeneratorPage() {
               <p className={shared.body}>
                 Form tools are faster and work for any kind of project, so use one if you need a branding or web design
                 brief. For Meta ads, a brief is only as good as what you know about the buyer, and that is the part a
-                form can’t fill in.
+                form can’t fill in. Loopy fills it in by researching the buyer first, and the homepage explains{' '}
+                <Link href="/#how">how Loopy’s research works</Link>.
               </p>
               <div className={styles.tableWrap}>
                 <table className={styles.table}>
@@ -310,7 +321,7 @@ export default function CreativeBriefGeneratorPage() {
           </div>
         </section>
 
-        <Faq title="Generator questions." items={FAQS} />
+        <Faq title="Questions about the brief generator." items={FAQS} />
       </main>
       <Footer page="content" />
     </>

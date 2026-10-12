@@ -213,9 +213,9 @@ const jsonLd = {
 
 const TOC = [
   ['research-first', 'Why research comes first'],
-  ['anatomy', 'The anatomy'],
+  ['anatomy', 'What goes in the brief'],
   ['template', 'Copy the template'],
-  ['example', 'A real example'],
+  ['example', 'A filled-in example'],
   ['failures', 'Why briefs fail'],
   ['faq', 'FAQ'],
 ] as const;
@@ -293,6 +293,9 @@ export default function BriefTemplatePage() {
                 <Check />
                 Real example from a live brand
               </li>
+              <li>
+                <time dateTime={MODIFIED}>Updated 12 October 2026</time>
+              </li>
             </ul>
 
             <figure className={styles.heroTile}>
@@ -351,9 +354,10 @@ export default function BriefTemplatePage() {
             </section>
 
             <section id="anatomy" className={styles.section}>
-              <h2>The anatomy</h2>
+              <h2>What goes in a Meta ads creative brief</h2>
               <p className={styles.body}>
-                A brief that survives the handoff has three parts. The first is the one most templates leave out.
+                A Meta ads creative brief has three parts: customer research, brand and campaign details, and one block
+                per concept. The first part is the one most templates leave out.
               </p>
               {PARTS.map((part, p) => (
                 <div key={part.title} className={styles.part}>
@@ -387,7 +391,7 @@ export default function BriefTemplatePage() {
             </section>
 
             <section id="example" className={styles.section}>
-              <h2>A real example</h2>
+              <h2>A filled-in example from a real brand</h2>
               <p className={styles.body}>
                 This is real Loopy output for Svens Island, an Australian brand that makes natural cream for
                 eczema-prone skin. Follow one idea from the customer’s words to the brief.
@@ -517,7 +521,7 @@ export default function BriefTemplatePage() {
           </div>
         </section>
 
-        <Faq title="Brief questions." items={FAQS} />
+        <Faq title="Questions about creative briefs." items={FAQS} />
       </main>
       <Footer page="content" />
     </>
