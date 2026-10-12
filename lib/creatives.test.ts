@@ -50,9 +50,3 @@ describe('landing image paths', () => {
     for (const src of paths) expect(existsSync(join('public', src)), src).toBe(true);
   });
 });
-
-describe('brief template download', () => {
-  it('ships the static Markdown file linked from TemplateTabs', () => {
-    expect(existsSync(join(process.cwd(), 'public', 'ad-creative-brief-template.md'))).toBe(true);
-  });
-});

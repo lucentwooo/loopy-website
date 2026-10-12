@@ -3,46 +3,76 @@
 import { useEffect, useRef, useState } from 'react';
 import styles from './page.module.css';
 
-type Row = { field: string; value: string; wide?: boolean };
+const RESEARCH = `Segment 1: [describe them in a situation, in their words]
+Segment 2: [describe them in a situation, in their words]
+Segment 3: [a segment from reviews and threads that the brand's ads don't target yet]
 
-const HEADER_ROWS: Row[] = [
-  { field: 'Client / brand', value: 'name + one line on what they sell' },
-  { field: 'Objective / success metric', value: 'sales - cost per purchase < $40' },
-  { field: 'Audience', value: 'who, in one sentence, with a real problem' },
-  { field: 'Awareness stage', value: 'problem-aware / solution-aware / most-aware' },
-  { field: 'About + proof stats', value: 'one-line story + review count, guarantee, quoted verbatim' },
-  { field: 'Website & assets', value: 'client URL - logo + product-shot links - customer-image source' },
-  { field: 'Fonts', value: 'role-based, e.g. Playfair Display headers, Inter body' },
-  { field: 'Colour scheme', value: 'text #… - accent #… - background #… - CTA #…' },
-  { field: 'Dimensions', value: 'feed 1080×1080 - story 1080×1920 - due date' },
-  { field: 'Mandatories', value: 'legal lines - disclaimers - never-show list' },
-];
+Problem: "[exact customer quote]" (source: [link])
+Problem: "[exact customer quote]" (source: [link])
 
-const CONCEPT_ROWS: Row[] = [
-  { field: 'Concept N - angle', value: 'pain point / desire / proof, ranked by awareness stage' },
-  { field: 'Reference ad', value: 'screenshot of the proven layout this concept builds on' },
-  { field: 'Visual notes', value: 'KEEP … / SWAP … / apply measured colours + fonts', wide: true },
-  { field: 'V1–V3 copy', value: 'headline + body per variation, one idea each' },
-  { field: 'Emphasis', value: 'which words get bold / accent colour per variant' },
-  { field: 'Identical across variations', value: 'labels - sign-off - support/compliance lines' },
-];
+Already tried: [what they tried] / why it let them down: [in their words]
+
+Wants: [the result they would pay for, in their words]
+Stops them buying: [price / smell / trust / "I have tried everything"]
+
+Awareness stage, segment 1: [unaware / problem aware / solution aware / product aware / most aware]
+Awareness stage, segment 2: [unaware / problem aware / solution aware / product aware / most aware]`;
+
+const BRAND = `Client / brand: [name and one line on what they sell]
+Objective: [the result you will judge the creative by]
+Success metric: [one number, e.g. cost per first order under $40]
+Offer: [pasted exactly as the brand states it]
+Guarantee: [pasted exactly]
+Proof: [review count, certifications, pasted exactly]
+Website: [client URL]
+Logo: [file link]
+Fonts: [by role, e.g. headings: ..., body: ...]
+Colors: [by role: text, accent, background, button]
+Product shots: [links]
+Formats and placements: [feed 1080×1350 or 1080×1080 / stories and reels 1080×1920 / static or video]
+Due date: [date]
+Mandatories: [required disclaimers]
+Never say or show: [words, claims, images to avoid]`;
+
+const CONCEPT = `Concept [N]
+Segment: [one segment]
+Problem it agitates: "[exact customer quote]"
+Awareness stage: [stage]
+Angle: [pain / desire / proof / offer / objection]
+
+Evidence: "[customer quote]" (source: [link])
+Evidence: "[customer quote]" (source: [link])
+
+Hook 1: [the problem, said the way the customer said it]
+Hook 2: [hook]
+Hook 3: [hook]
+Body copy: [one idea]
+Call to action: [button text]
+
+Reference ad: [screenshot of a layout that already works]
+Keep: [what stays from the reference]
+Change: [what changes for this client]`;
 
 const TABS = [
-  { key: 'header', label: 'Brand header', rows: HEADER_ROWS },
-  { key: 'concept', label: 'Concept block', rows: CONCEPT_ROWS },
+  { key: 'research', label: 'Customer research', text: RESEARCH },
+  { key: 'brand', label: 'Brand and campaign', text: BRAND },
+  { key: 'concept', label: 'Concept block', text: CONCEPT },
 ] as const;
 
-/** Static copy of the template in public/ - keep in sync with the rows above. */
-const DOWNLOAD_HREF = '/ad-creative-brief-template.md';
+type Key = (typeof TABS)[number]['key'];
 
-function toPlainText(rows: Row[]): string {
-  return rows.map((r) => `${r.field}: ${r.value}`).join('\n');
+const PART_TITLES = ['Part 1: Customer research', 'Part 2: Brand and campaign', 'Part 3: One block per concept (repeat for each concept)'];
+
+function markdown(): string {
+  const body = TABS.map((t, i) => `## ${PART_TITLES[i]}\n\n\`\`\`\n${t.text}\n\`\`\``).join('\n\n');
+  return `# Meta ads creative brief template\n\nFrom tryloopy.io/ad-creative-brief-template. Start with what customers say, then build the brief.\n\n${body}\n`;
 }
 
 export function TemplateTabs() {
-  const [tab, setTab] = useState<(typeof TABS)[number]['key']>('header');
+  const [tab, setTab] = useState<Key>('research');
   const [copied, setCopied] = useState(false);
   const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const tabRefs = useRef<Record<string, HTMLButtonElement | null>>({});
   const active = TABS.find((t) => t.key === tab)!;
 
   useEffect(() => () => {
@@ -51,65 +81,69 @@ export function TemplateTabs() {
 
   async function copy() {
     try {
-      await navigator.clipboard.writeText(toPlainText(active.rows));
+      await navigator.clipboard.writeText(active.text);
       setCopied(true);
       if (timer.current) clearTimeout(timer.current);
       timer.current = setTimeout(() => setCopied(false), 1600);
     } catch {
-      /* clipboard unavailable — user can still select the text */
+      /* clipboard unavailable: the text is still selectable */
     }
   }
 
-  return (
-    <div className={styles.doc}>
-      <div className={styles.chrome}>
-        <span className={styles.chromeDots} aria-hidden="true">
-          <i />
-          <i />
-          <i />
-        </span>
-        <span className={styles.chromeTitle}>creative-brief - template</span>
-        <span className={styles.chromeActions}>
-          <a href={DOWNLOAD_HREF} download className={styles.copyBtn}>
-            download .md
-          </a>
-          <button type="button" onClick={copy} className={styles.copyBtn} aria-live="polite">
-            {copied ? 'copied ✓' : 'copy'}
-          </button>
-        </span>
-      </div>
+  function download() {
+    const url = URL.createObjectURL(new Blob([markdown()], { type: 'text/markdown' }));
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'meta-ads-creative-brief-template.md';
+    a.click();
+    URL.revokeObjectURL(url);
+  }
 
+  function onKeyDown(e: React.KeyboardEvent, i: number) {
+    const step = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
+    if (!step) return;
+    e.preventDefault();
+    const next = TABS[(i + step + TABS.length) % TABS.length];
+    setTab(next.key);
+    tabRefs.current[next.key]?.focus();
+  }
+
+  return (
+    <div className={styles.tpl}>
       <div role="tablist" aria-label="Template parts" className={styles.tabs}>
-        {TABS.map((t) => (
+        {TABS.map((t, i) => (
           <button
             key={t.key}
+            ref={(el) => {
+              tabRefs.current[t.key] = el;
+            }}
             role="tab"
             id={`brief-tab-${t.key}`}
             aria-controls={`brief-panel-${t.key}`}
             type="button"
             aria-selected={tab === t.key}
+            tabIndex={tab === t.key ? 0 : -1}
             onClick={() => setTab(t.key)}
-            className={`${styles.tab}${tab === t.key ? ` ${styles.tabActive}` : ''}`}
+            onKeyDown={(e) => onKeyDown(e, i)}
+            className={`${styles.tab}${tab === t.key ? ` ${styles.tabOn}` : ''}`}
           >
             {t.label}
           </button>
         ))}
       </div>
 
-      <div role="tabpanel" id={`brief-panel-${active.key}`} aria-labelledby={`brief-tab-${active.key}`}>
-        {active.rows.map((row) =>
-          row.wide ? (
-            <div key={row.field} className={styles.wideRow}>
-              <span className={styles.templateField}>{row.field}</span>
-              <span className={styles.templateHint}>{row.value}</span>
-            </div>
-          ) : (
-            <div key={row.field} className={styles.templateRow}>
-              <span className={styles.templateField}>{row.field}</span>
-              <span className={styles.templateHint}>{row.value}</span>
-            </div>
-          ),
-        )}
+      <div className={styles.tplCard}>
+        <div role="tabpanel" id={`brief-panel-${active.key}`} aria-labelledby={`brief-tab-${active.key}`} tabIndex={0}>
+          <pre className={styles.tplText}>{active.text}</pre>
+        </div>
+        <div className={styles.tplActions}>
+          <button type="button" onClick={copy} className="pill pill-outline pill-sm" aria-live="polite">
+            {copied ? 'Copied' : 'Copy this part'}
+          </button>
+          <button type="button" onClick={download} className="pill pill-outline pill-sm">
+            Download all as .md
+          </button>
+        </div>
       </div>
     </div>
   );
