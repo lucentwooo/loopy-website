@@ -133,7 +133,7 @@ const FAILURES: { name: string; why: ReactNode }[] = [
   },
   {
     name: 'No number to judge by',
-    why: 'Without one success metric, feedback becomes taste. With one, it becomes “this won’t move cost per order”.',
+    why: 'Without one success metric, every round of feedback is an opinion. With one, it becomes “this won’t move cost per order”.',
   },
 ];
 
@@ -267,7 +267,7 @@ export default function BriefTemplatePage() {
             <h1 className={styles.display}>The Meta ads creative brief template that starts with your customer.</h1>
             <div className={styles.lines}>
               <p>
-                Most briefs start with the brand and guess the angles. Good ones start with what customers actually
+                Most briefs start with the brand and guess the angles. Good ones start with what customers
                 say, because that is where the ideas come from.
               </p>
               <p>Copy the template below, see a real one filled in, and use it on your next client.</p>
@@ -337,7 +337,7 @@ export default function BriefTemplatePage() {
               </p>
               <p className={styles.body}>
                 Research is where you find buyers you aren’t targeting yet and problems you aren’t agitating yet. It
-                lives in Reddit threads, reviews, TikTok and YouTube comments, and Instagram posts, written by people
+                lives in <Link href="/reddit-market-research-tool">Reddit threads</Link>, reviews, TikTok and YouTube comments, and Instagram posts, written by people
                 who never meant to help with your ads. <Link href="/#how">See how Loopy does this research</Link>.
               </p>
               <ol className={styles.track} aria-label="From research to brief">
@@ -379,7 +379,9 @@ export default function BriefTemplatePage() {
               <h2>Copy the template</h2>
               <p className={styles.body}>
                 Switch between the three parts and copy each one as text, or download the whole template as a Markdown
-                file for Notion, Google Docs or your project tool.
+                file for Notion, Google Docs or your project tool. Rather have it filled in for you? The{' '}
+                <Link href="/creative-brief-generator">free creative brief generator</Link> researches a product page
+                and emails you a brief.
               </p>
               <TemplateTabs />
             </section>

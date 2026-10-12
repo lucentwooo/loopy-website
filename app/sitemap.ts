@@ -7,6 +7,8 @@ import { SITE_URL } from '@/lib/site';
 const PAGES: { path: string; lastModified: string; changeFrequency: 'weekly' | 'monthly'; priority: number }[] = [
   { path: '/', lastModified: '2026-10-01', changeFrequency: 'weekly', priority: 1 },
   { path: '/ad-creative-brief-template', lastModified: '2026-10-12', changeFrequency: 'monthly', priority: 0.8 },
+  { path: '/creative-brief-generator', lastModified: '2026-10-12', changeFrequency: 'monthly', priority: 0.8 },
+  { path: '/reddit-market-research-tool', lastModified: '2026-10-12', changeFrequency: 'monthly', priority: 0.8 },
   { path: '/pricing', lastModified: '2026-10-01', changeFrequency: 'monthly', priority: 0.7 },
 ];
 

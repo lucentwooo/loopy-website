@@ -2,8 +2,8 @@
    pills, .ang, .pin) come from globals.css; everything else is scoped here. */
 
 /* Links inside body copy are ink with an underline, never blue. */
-.article a, .cta a { color: var(--fg); text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
-.article a:hover, .cta a:hover { text-decoration-thickness: 2px; }
+.article a:not(:global(.pill)), .cta a:not(:global(.pill)) { color: var(--fg); text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
+.article a:not(:global(.pill)):hover, .cta a:not(:global(.pill)):hover { text-decoration-thickness: 2px; }
 
 /* Hero */
 .hero { position: relative; z-index: 1; padding-top: 84px; text-align: center; }
