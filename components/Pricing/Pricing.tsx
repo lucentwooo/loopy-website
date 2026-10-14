@@ -44,6 +44,7 @@ const PLANS: Plan[] = [
       `${STARTER.brands} client brands`,
       'Unlimited briefs, hooks and copy',
       'Deep customer research on every brand',
+      'Dig deeper on any concept: fresh customer quotes, a sharper rewrite and new angles, 5 per brand each week',
       'Learns from your ad results',
       `${STARTER.rendersPerMonth.toLocaleString('en-US')} image renders a month`,
     ],
