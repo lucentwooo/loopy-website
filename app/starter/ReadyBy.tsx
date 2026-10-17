@@ -4,7 +4,8 @@ import { useSyncExternalStore } from 'react';
 
 function readyText(hours: number) {
   const now = new Date();
-  const t = new Date(now.getTime() + hours * 3600e3);
+  // The clock starts at the intake form, so allow ~10 minutes for checkout and the form, rounded up to 5.
+  const t = new Date(Math.ceil((now.getTime() + hours * 3600e3 + 600e3) / 300e3) * 300e3);
   const time = t
     .toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' })
     .replace(/\s?([AP])\.?M\.?/i, (_, p: string) => ' ' + p.toLowerCase() + 'm');

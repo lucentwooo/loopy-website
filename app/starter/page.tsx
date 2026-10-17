@@ -1,9 +1,8 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
-import { APP_URL } from '@/lib/site';
+import { APP_URL, STARTER_CHECKOUT_URL } from '@/lib/site';
 import { Compare } from './Compare';
 import { HeroCarousel } from './HeroCarousel';
-import { OfferForm } from './OfferForm';
 import { ReadyBy } from './ReadyBy';
 import { StickyBar } from './StickyBar';
 import styles from './starter.module.css';
@@ -344,7 +343,33 @@ export default function StarterPage() {
             </div>
           </div>
           <div className={`${styles.tile} ${styles.gInput} ${styles.offerTile} ${styles.rise}`}>
-            <OfferForm />
+            <div className={styles.offer}>
+              <div className={styles.offerTop}>
+                <b>The starter</b>
+                <span className={`${styles.chip} ${styles.chipSm}`}>One per brand</span>
+              </div>
+              <div className={styles.priceRow}>
+                <span className={styles.priceNum}>$99</span>
+                <span>one time, no subscription</span>
+              </div>
+              <ul className={styles.checks}>
+                <li><Icon name="check" size={16} />Your competitor breakdown</li>
+                <li><Icon name="check" size={16} />10 static ads for your brand</li>
+                <li><Icon name="check" size={16} />Primary text, headline and button for each</li>
+                <li><Icon name="check" size={16} />Launch video and ad IDs</li>
+                <li><Icon name="check" size={16} /><span>Ready <b><ReadyBy hours={1} /></b></span></li>
+              </ul>
+              <div className={styles.rule} />
+              <div className={styles.extra}>
+                <span className={styles.plus}>+</span>
+                <span><b>Want 20 ads?</b>Add 10 more on new angles at checkout.</span>
+                <span className={styles.amt}>$49</span>
+              </div>
+              <a className={`${styles.pill} ${styles.pillPrimary}`} href={STARTER_CHECKOUT_URL}>
+                Continue to checkout <Icon name="arrow" size={16} />
+              </a>
+              <p className={styles.fine}>Secure checkout with Stripe.</p>
+            </div>
           </div>
         </section>
 

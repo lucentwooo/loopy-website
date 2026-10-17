@@ -299,19 +299,10 @@
 .priceRow span { font-size: 15px; color: var(--fg-3); }
 .offer .checks b { color: var(--fg); font-weight: 600; }
 .rule { height: 1px; background: var(--border-hairline); }
-.extras { display: grid; gap: 8px; }
-.extrasH { font-size: 13px; font-weight: 600; color: var(--fg-3); }
-.extra { display: grid; grid-template-columns: 20px minmax(0, 1fr) auto; gap: 12px; align-items: center; border: 1px solid var(--border); border-radius: 14px; padding: 12px 13px; font-size: 14px; line-height: 19px; color: var(--fg-2); cursor: pointer; transition: border-color 0.2s, background 0.2s; }
-.extra:has(input:checked) { border-color: var(--fg); background: var(--bg-sunken); }
-.extra input { width: 18px; height: 18px; margin: 0; accent-color: var(--fg); cursor: pointer; }
+.extra { display: grid; grid-template-columns: 22px minmax(0, 1fr) auto; gap: 12px; align-items: center; border: 1px solid var(--border); border-radius: 14px; padding: 12px 13px; font-size: 14px; line-height: 19px; color: var(--fg-2); }
+.plus { width: 22px; height: 22px; border-radius: 999px; background: var(--bg-sunken); color: var(--fg); display: grid; place-items: center; font-weight: 600; }
 .extra b { color: var(--fg); font-weight: 600; display: block; }
 .extra .amt { font-weight: 600; color: var(--fg); font-variant-numeric: tabular-nums; }
-.fields { display: grid; gap: 8px; }
-.field { height: 52px; border-radius: 999px; border: 1px solid var(--btn-border); background: var(--bg); padding: 0 20px; display: flex; align-items: center; gap: 10px; }
-.field:focus-within { border-color: var(--fg); }
-.field svg { flex: none; color: var(--fg-3); }
-.field input { border: 0; outline: 0; background: transparent; width: 100%; min-width: 0; font-size: 16px; }
-.field input::placeholder { color: var(--fg-muted); }
 .offer .pillPrimary { width: 100%; }
 .fine { font-size: 13px; line-height: 19px; color: var(--fg-3); text-align: center; }
 .promise { padding: 22px 20px; display: grid; gap: 8px; }

@@ -6,5 +6,5 @@ export const APP_URL = 'https://app.tryloopy.io';
 
 export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://tryloopy.io';
 
-// The app's checkout route for this URL is not built yet.
-export const STARTER_CHECKOUT_URL = `${APP_URL}/api/starter/checkout`;
+// The app's $99 starter checkout page (being built on the app's feat/starter-offer branch).
+export const STARTER_CHECKOUT_URL = `${APP_URL}/starter`;
