@@ -21,6 +21,10 @@ const nextConfig: NextConfig = {
       { source: '/ingest/:path*', destination: 'https://us.i.posthog.com/:path*' },
     ];
   },
+  // The $99 starter sales page and checkout live in the app now.
+  async redirects() {
+    return [{ source: '/starter', destination: 'https://app.tryloopy.io/starter', permanent: true }];
+  },
 };
 
 export default nextConfig;
