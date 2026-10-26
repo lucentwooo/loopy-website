@@ -31,13 +31,13 @@ export function Hero() {
   return (
     <section className={styles.hero}>
       <div className="wrap">
-        <h1 className={styles.display}>Your competitors’ winning ads, remade for your brand in 5 minutes.</h1>
+        <h1 className={styles.display}>Remake your competitors’ winning ads for your brand.</h1>
         <div className={styles.lines}>
-          <p>Your first one is free.</p>
+          <p>Paste your website and we’ll make your first one in about 5 minutes.</p>
         </div>
         <div className="ctas">
           <a className="pill pill-primary" href={FREE_AD_URL}>
-            Get your first ad free
+            Make my free ad
           </a>
         </div>
         <ul className={styles.trust}>
@@ -74,9 +74,9 @@ export function Hero() {
           <div className={styles.fade} />
         </div>
         <div className={styles.float}>
-          <figure className={styles.flow} aria-label="A competitor's long-running ad and the same ad remade for another brand">
+          <figure className={styles.flow} aria-label="A competitor’s ad and the same ad made for Magic Spoon">
             <div className={styles.step}>
-              <p className={styles.lab}>Their ad, running for 42 days</p>
+              <p className={styles.lab}>Their ad, 42 days</p>
               <div className={styles.card}>
                 <Image src="/landing/free-ad-theirs.jpg" alt="Kodiak Cakes ad that has run for 42 days" width={280} height={350} loading="eager" />
                 <span>Kodiak Cakes</span>
@@ -84,7 +84,7 @@ export function Hero() {
             </div>
             <Connector />
             <div className={styles.step}>
-              <p className={styles.lab}>Your ad, made by Loopy</p>
+              <p className={styles.lab}>Your ad</p>
               <div className={styles.card}>
                 <Image src="/landing/free-ad-ours.jpg" alt="The same ad remade for Magic Spoon" width={280} height={350} loading="eager" />
                 <span>Magic Spoon</span>

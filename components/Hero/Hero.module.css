@@ -58,18 +58,19 @@
 }
 
 @media (max-width: 720px) {
-  .hero { padding-top: 44px; }
-  .display { font-size: 44px; line-height: 46px; letter-spacing: -0.042em; }
+  .hero { padding-top: 28px; }
+  .display { font-size: 40px; line-height: 46px; letter-spacing: -0.035em; }
   .lines { margin-top: 20px; gap: 8px; }
   .lines p { font-size: 17px; line-height: 26px; }
   .hero :global(.ctas) { margin-top: 28px; }
   .trust { margin-top: 20px; flex-direction: column; align-items: center; gap: 8px; font-size: 14px; }
 
   /* The wall fades out behind the card; the card itself keeps its text at reading size. */
-  .wallHero { --cw: 118px; --gap: 10px; --ft: 48px; --fb: 200px; --fs: 24px; --wh: 520px; --k: 0.6; margin-top: 36px; padding-top: 64px; }
+  .wallHero { --cw: 118px; --gap: 10px; --ft: 48px; --fb: 200px; --fs: 24px; --wh: 520px; --k: 0.6; margin-top: 28px; padding-top: 40px; }
   .float { width: calc(100% - 32px); }
-  .flow { flex-direction: column; align-items: center; padding: 18px 14px 16px; border-radius: 22px; }
-  .step { flex: none; width: min(280px, 100%); gap: 10px; }
+  .flow { padding: 16px 12px 14px; border-radius: 22px; }
+  .step { gap: 10px; }
   .lab { padding-left: 2px; }
-  .con { margin: 20px 0; transform: rotate(90deg); }
+  .con { width: 20px; margin: 120px 6px 0; }
+  .card { padding: 8px 8px 10px; }
 }
