@@ -5,3 +5,6 @@ export const CAL_URL = 'https://cal.com/loopy/20min';
 export const APP_URL = 'https://app.tryloopy.io';
 
 export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://tryloopy.io';
+
+/** The free first-ad page: the front door for DTC brand owners. */
+export const FREE_AD_URL = 'https://app.tryloopy.io/free-ad';
