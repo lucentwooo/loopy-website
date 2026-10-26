@@ -31,7 +31,7 @@ export function Hero() {
   return (
     <section className={styles.hero}>
       <div className="wrap">
-        <h1 className={styles.display}>Remake your competitors’ winning ads for your brand.</h1>
+        <h1 className={styles.display}>Steal your competitors’ winning ads.</h1>
         <div className={styles.lines}>
           <p>Paste your website and we’ll make your first one in about 5 minutes.</p>
         </div>
