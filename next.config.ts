@@ -15,6 +15,13 @@ const nextConfig: NextConfig = {
   // PostHog reverse proxy: ad blockers block posthog.com by domain name, so the
   // browser talks to /ingest on our own domain and Vercel forwards it.
   skipTrailingSlashRedirect: true,
+  // The ad breakdowns live in the app; Reels may link the bare domain.
+  // Temporary (307) so the target can move without browsers caching it.
+  async redirects() {
+    return [
+      { source: '/resources/:path*', destination: 'https://app.tryloopy.io/resources/:path*', permanent: false },
+    ];
+  },
   async rewrites() {
     return [
       { source: '/ingest/static/:path*', destination: 'https://us-assets.i.posthog.com/static/:path*' },
