@@ -1,0 +1,37 @@
+/* Compare (#compare): Loopy against the kinds of tool people use today. Loopy's column carries the tint. */
+.compare :global(.sec-head) { margin-bottom: 48px; }
+.table { width: 100%; border-collapse: separate; border-spacing: 0; table-layout: fixed; }
+.table th, .table td { padding: 18px 16px; text-align: center; vertical-align: middle; border-bottom: 1px solid var(--border-hairline); }
+.table thead th { padding-top: 22px; padding-bottom: 22px; font-size: 15px; line-height: 22px; font-weight: 600; letter-spacing: -0.01em; color: var(--fg-2); }
+.table thead td { border-bottom-color: var(--border-hairline); }
+.table tbody th { width: 34%; padding-left: 0; text-align: left; font-size: 16px; line-height: 24px; font-weight: 500; letter-spacing: -0.01em; color: var(--fg); }
+.table td { font-size: 15px; line-height: 22px; color: var(--fg-3); }
+.table td.text { font-weight: 500; }
+.table tbody tr:last-child th, .table tbody tr:last-child td { border-bottom: 0; }
+
+.us { background: var(--accent-soft); }
+.table thead th.us { border-radius: var(--radius-xl) var(--radius-xl) 0 0; font-size: 17px; color: var(--accent); }
+.table tbody tr:last-child td.us { border-radius: 0 0 var(--radius-xl) var(--radius-xl); }
+.table td.us { border-bottom-color: var(--accent-border); color: var(--fg); font-weight: 600; }
+.table tbody tr:last-child td.us { padding-bottom: 22px; }
+
+.tick { width: 20px; height: 20px; display: inline-block; vertical-align: middle; fill: none; stroke: var(--fg); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.us .tick { stroke: var(--accent); }
+.dash { color: var(--fg-muted); }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.note { margin-top: 24px; text-align: center; font-size: 14px; line-height: 20px; color: var(--fg-3); }
+
+/* Phone: one block per question, a labelled line per kind of tool. No sideways scroll. */
+@media (max-width: 720px) {
+  .compare :global(.sec-head) { margin-bottom: 32px; }
+  .table, .table tbody { display: block; }
+  .table thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+  .table tbody tr { display: block; padding: 18px 0 10px; border-bottom: 1px solid var(--border-hairline); }
+  .table tbody tr:last-child { border-bottom: 0; }
+  .table tbody th { display: block; width: auto; padding: 0 0 10px; border: 0; font-size: 16px; }
+  .table td { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 9px 12px; border: 0; text-align: right; }
+  .table td::before { content: attr(data-label); text-align: left; font-size: 14.5px; color: var(--fg-2); font-weight: 450; }
+  .table td.us { border-radius: var(--radius-md); }
+  .table tbody tr:last-child td.us { border-radius: var(--radius-md); padding-bottom: 9px; }
+  .table td.us::before { color: var(--accent); font-weight: 600; }
+}
