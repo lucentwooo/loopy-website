@@ -6,12 +6,12 @@ import styles from './page.module.css';
 type Row = { field: string; value: string; wide?: boolean };
 
 const HEADER_ROWS: Row[] = [
-  { field: 'Client / brand', value: 'name + one line on what they sell' },
+  { field: 'Brand', value: 'name + one line on what they sell' },
   { field: 'Objective / success metric', value: 'sales - cost per purchase < $40' },
   { field: 'Audience', value: 'who, in one sentence, with a real problem' },
   { field: 'Awareness stage', value: 'problem-aware / solution-aware / most-aware' },
   { field: 'About + proof stats', value: 'one-line story + review count, guarantee, quoted verbatim' },
-  { field: 'Website & assets', value: 'client URL - logo + product-shot links - customer-image source' },
+  { field: 'Website & assets', value: 'brand URL - logo + product-shot links - customer-image source' },
   { field: 'Fonts', value: 'role-based, e.g. Playfair Display headers, Inter body' },
   { field: 'Colour scheme', value: 'text #… - accent #… - background #… - CTA #…' },
   { field: 'Dimensions', value: 'feed 1080×1080 - story 1080×1920 - due date' },

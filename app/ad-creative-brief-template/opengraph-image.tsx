@@ -55,7 +55,7 @@ export default function OpengraphImage() {
             }}
           >
             <div>The ad creative brief template</div>
-            <div style={{ color: '#1c42e6' }}>agencies actually use.</div>
+            <div style={{ color: '#1c42e6' }}>DTC brands actually use.</div>
           </div>
           <div style={{ marginTop: 28, fontSize: 30, color: '#3c414c', maxWidth: 980, lineHeight: 1.35 }}>
             Brand header, ranked concept blocks, KEEP/SWAP visual notes and three copy variants. Built for Meta ads.

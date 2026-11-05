@@ -12,7 +12,7 @@ export function Footer({ page = 'landing' }: { page?: 'landing' | 'pricing' | 'c
       <div className={styles.top}>
         <div className={styles.brand}>
           <Image src="/loopy-logo.png" alt="Loopy" width={70} height={28} />
-          <p>Loopy researches your clients’ customers, ranks the ad ideas and writes the brief.</p>
+          <p>Loopy researches your customers, ranks the ad ideas and writes the brief.</p>
         </div>
         <div className={styles.cols}>
           <div>

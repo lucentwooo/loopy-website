@@ -11,9 +11,9 @@ const PATH = '/ad-creative-brief-template';
 
 const TITLE = 'Ad Creative Brief Template for Meta Ads (Free, Copy-Paste)';
 const DESCRIPTION =
-  'A one-page ad creative brief template built for agencies running Facebook and Instagram ads: the brand header, ranked concept blocks with visual notes and three copy variations - plus a filled-in example and a downloadable file.';
+  'A one-page ad creative brief template built for DTC brands and creative strategists running Facebook and Instagram ads: the brand header, ranked concept blocks with visual notes and three copy variations - plus a filled-in example and a downloadable file.';
 const PUBLISHED = '2026-08-22';
-const MODIFIED = '2026-08-22';
+const MODIFIED = '2026-11-05';
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -58,7 +58,7 @@ const HEADER_FIELDS: { name: string; why: string }[] = [
   },
   {
     name: 'Mandatories and exclusions',
-    why: 'Legal lines, disclaimers, things the client never wants shown. Ten seconds here saves a compliance fire drill later - and gives you the support line every variation repeats identically.',
+    why: 'Legal lines, disclaimers, things the brand never wants shown. Ten seconds here saves a compliance fire drill later - and gives you the support line every variation repeats identically.',
   },
 ];
 
@@ -69,11 +69,11 @@ const CONCEPT_FIELDS: { name: string; why: string }[] = [
   },
   {
     name: 'A reference ad attached',
-    why: 'Screenshot the proven ad whose layout the concept builds on - pulled from the client’s category or a competitor library ranked by how long Meta kept each ad running. Long-running means tested.',
+    why: 'Screenshot the proven ad whose layout the concept builds on - pulled from the brand’s category or a competitor library ranked by how long Meta kept each ad running. Long-running means tested.',
   },
   {
     name: 'Visual notes a designer can execute blind',
-    why: 'KEEP / SWAP instructions: keep the layout and text-block arrangement of the reference, swap imagery to the client’s world, apply the measured hexes and fonts. Written so a freelancer who has never met the client ships on the first pass.',
+    why: 'KEEP / SWAP instructions: keep the layout and text-block arrangement of the reference, swap imagery to the brand’s world, apply the measured hexes and fonts. Written so a freelancer who has never worked on the brand ships on the first pass.',
   },
   {
     name: 'Three copy variations, emphasis marked',
@@ -100,19 +100,19 @@ const FAQS: FaqItem[] = [
   },
   {
     q: 'Can AI write an ad creative brief?',
-    a: 'It can produce the document in minutes, but quality depends entirely on the research behind it. Generic tools generate plausible filler from a prompt box. Research-first tools like Loopy measure the client’s live brand, mine customer reviews and competitor ads, rank angles by awareness stage, then draft the full brief - header, visual notes, variants and references included.',
+    a: 'It can produce the document in minutes, but quality depends entirely on the research behind it. Generic tools generate plausible filler from a prompt box. Research-first tools like Loopy measure the brand’s live site, mine customer reviews and competitor ads, rank angles by awareness stage, then draft the full brief - header, visual notes, variants and references included.',
   },
   {
     q: 'What is the difference between a creative brief and a media plan?',
-    a: 'The creative brief decides what the ads say and look like - message, angles, brand, proof. The media plan decides where, when and at what budget they run. Agencies write briefs first; the plan spends money against what the brief promised.',
+    a: 'The creative brief decides what the ads say and look like - message, angles, brand, proof. The media plan decides where, when and at what budget they run. Strong teams write the brief first; the plan spends money against what the brief promised.',
   },
   {
     q: 'Is a Facebook ad brief different from a regular creative brief?',
     a: 'Same document, tuned for Meta: deliverables are feed 1080×1080 and story 1080×1920, hooks matter more than headlines because the first line fights the scroll, and the brief should note placements since story crops punish designs made only for square.',
   },
   {
-    q: 'How do we get client sign-off on a brief faster?',
-    a: 'Send options, not blanks: present the concepts pre-ranked with a one-line rationale for each, attach the research that backs every recommendation, and cap revisions to one round. Clients approve faster when they are choosing between good answers instead of auditing guesses.',
+    q: 'How do we get sign-off on a brief faster?',
+    a: 'Send options, not blanks: present the concepts pre-ranked with a one-line rationale for each, attach the research that backs every recommendation, and cap revisions to one round. Founders and stakeholders approve faster when they are choosing between good answers instead of auditing guesses.',
   },
 ];
 
@@ -185,11 +185,11 @@ export default function BriefTemplatePage() {
           <div className={`wrap ${styles.heroInner}`}>
             <p className={`${styles.heroEyebrow} ${styles.reveal}`}>Free resource - steal this</p>
             <h1 className={`${styles.h1} ${styles.reveal}`} style={{ animationDelay: '80ms' }}>
-              The ad creative brief template agencies actually use<span className={styles.dot}>.</span>
+              The ad creative brief template DTC brands actually use<span className={styles.dot}>.</span>
             </h1>
             <p className={`${styles.lede} ${styles.reveal}`} style={{ animationDelay: '160ms' }}>
               Most briefs fail the same way: thirty intake questions, no success metric, angles invented in a vacuum.
-              This is the version built for outsourcing Meta ads work - a skimmable brand header, then one concept
+              This is the version built for handing Meta ads work to a designer: a skimmable brand header, then one concept
               block per angle, each with a reference ad, visual notes and three copy variations.
             </p>
             <div className={`${styles.heroMeta} ${styles.reveal}`} style={{ animationDelay: '240ms' }}>
@@ -276,7 +276,7 @@ export default function BriefTemplatePage() {
               <h2>Copy-paste template</h2>
               <p className={styles.sectionLede}>
                 Built for Facebook and Instagram placements. Switch between the two parts below and copy either as
-                text, or download the whole template as a Markdown file for your project tool or client doc.
+                text, or download the whole template as a Markdown file for your project tool or shared doc.
               </p>
               <TemplateTabs />
             </section>
@@ -285,7 +285,7 @@ export default function BriefTemplatePage() {
               <h2>Filled-in example</h2>
               <p className={styles.sectionLede}>
                 What &ldquo;done&rdquo; looks like. Fictional brand - but notice how every entry is specific enough
-                that a designer who has never met the client could ship from it.
+                that a designer who has never worked on the brand could ship from it.
               </p>
 
               <div className={styles.doc}>
@@ -364,7 +364,7 @@ export default function BriefTemplatePage() {
                   <b>01</b>
                   <div>
                     <h3>The 30-question intake form</h3>
-                    <p>Clients abandon them or answer in essays. Ten sharp fields beat thirty vague ones.</p>
+                    <p>People abandon them or answer in essays. Ten sharp fields beat thirty vague ones.</p>
                   </div>
                 </li>
                 <li>
@@ -378,7 +378,7 @@ export default function BriefTemplatePage() {
                   <b>03</b>
                   <div>
                     <h3>Angles nobody researched</h3>
-                    <p>Brainstormed angles recycle what the client already says about themselves. The best angles come from customer reviews, competitor ads and support tickets.</p>
+                    <p>Brainstormed angles recycle what the brand already says about itself. The best angles come from customer reviews, competitor ads and support tickets.</p>
                   </div>
                 </li>
                 <li>
@@ -394,7 +394,7 @@ export default function BriefTemplatePage() {
             <section className={styles.ctaBand}>
               <h2>Want the brief written for you?</h2>
               <p>
-                Your first client brief is free on a real client - research, ranked concepts and renders included, no
+                Your first brief is free on your real brand: research, ranked concepts and renders included, no
                 card. <Link href="/">How Loopy builds it</Link> and <Link href="/pricing">what it costs after</Link>.
               </p>
               <a href={CAL_URL} className={styles.ctaBtn}>

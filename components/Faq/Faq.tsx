@@ -11,27 +11,27 @@ export interface FaqItem {
 const FAQS: FaqItem[] = [
   {
     q: 'Is this just another AI template tool?',
-    a: 'No. There’s no prompt box and no templates to pick from. A real browser reads your client’s site, and the ideas come from customer research and a library of competitor ads, sorted by how long they stayed live on Meta.',
+    a: 'No. There’s no prompt box and no templates to pick from. A real browser reads your site, and the ideas come from customer research and a library of competitor ads, sorted by how long they stayed live on Meta.',
   },
   {
-    q: 'Will it make things up about my client?',
-    a: 'No. It works from your client’s live site and anything they gave you, like a deck, call notes or an old brief. It uses product photos exactly as they are and never redraws them.',
+    q: 'Will it make things up about my brand?',
+    a: 'No. It works from your live site and anything you give it, like a deck, call notes or an old brief. It uses product photos exactly as they are and never redraws them.',
   },
   {
     q: 'What happens in the demo?',
-    a: 'You spend 20 minutes with the founders. We run one of your clients through Loopy while you watch, and you keep the brief. We’ll also ask where your week goes, because that tells us what to build next.',
+    a: 'You spend 20 minutes with the founders. We run your brand through Loopy while you watch, and you keep the brief. We’ll also ask where your week goes, because that tells us what to build next.',
   },
   {
     q: 'What do I get?',
-    a: 'You get a client-ready brief sorted by awareness stage, with copy, reference ads and notes for your designer. You can share it as a link or export it as a PDF or Markdown file. Loopy can also make static ads in feed and story sizes if you want them.',
+    a: 'You get a ready-to-use brief sorted by awareness stage, with copy, reference ads and notes for your designer. You can share it as a link or export it as a PDF or Markdown file. Loopy can also make static ads in feed and story sizes if you want them.',
   },
   {
     q: 'Can we help shape what you build?',
-    a: 'Yes. We build Loopy with a small group of agencies. Tell us which part of your creative work takes the most hours, and we’ll work on it next.',
+    a: 'Yes. We build Loopy with the people who use it. Tell us which part of your creative work takes the most hours, and we’ll work on it next.',
   },
   {
     q: 'What does it cost?',
-    a: `Your first client brief is free, and you don’t need a card. After that, plans start at $${PAID_PLANS[0].monthlyPrice} a month, and paying yearly saves ${ANNUAL_SAVINGS_PCT}%.`,
+    a: `Your first brief is free, and you don’t need a card. After that, plans start at $${PAID_PLANS[0].monthlyPrice} a month, and paying yearly saves ${ANNUAL_SAVINGS_PCT}%.`,
   },
 ];
 

@@ -68,14 +68,14 @@ export function HowItWorks() {
   return (
     <section className="wrap section" id="how">
       <div className="sec-head">
-        <h2 className="sh">Every idea is built on what your client’s customers really say.</h2>
+        <h2 className="sh">Every idea is built on what your customers really say.</h2>
         <p className="sub">And you can always see where it came from.</p>
       </div>
 
       <ol className={styles.steps}>
         <li className={styles.step}>
           <StepText n="01" title="It reads the brand">
-            Loopy opens your client’s website and notes their real colors, fonts and logo.
+            Loopy opens your website and notes your real colors, fonts and logo.
           </StepText>
           <figure className={styles.ill} style={{ '--glow': GLOW.brand }}>
             <div className={styles.stage}>

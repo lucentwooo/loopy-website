@@ -14,9 +14,9 @@ const inter = Inter({
   display: 'swap',
 });
 
-const TITLE = 'Meta ad research, briefs & creative, automated for agencies - Loopy';
+const TITLE = 'Meta ad research, briefs & creative for DTC brands - Loopy';
 const DESCRIPTION =
-  "Drop in a client's website. Loopy reads the real brand, researches customers and competitors, and turns it into ranked ad concepts and a client-ready creative brief in minutes - then renders the on-brand creative too. First client brief free.";
+  "Drop in your brand's website. Loopy reads the real brand, researches your customers and competitors, and turns it into ranked ad concepts and a ready-to-use creative brief in minutes, then renders the on-brand creative too. Your first brief is free.";
 
 // Entity-identity structured data: Organization + WebSite identify Loopy as a
 // distinct entity; SoftwareApplication carries the plan offers.
@@ -47,7 +47,7 @@ const jsonLd = {
       operatingSystem: 'Web',
       url: SITE_URL,
       description:
-        "Loopy automates the research and brief work behind an agency's Meta ads: drop in a client's website, and it reads the real brand, researches customers and competitors, then turns it into ranked ad concepts and a client-ready creative brief - with on-brand renders attached.",
+        "Loopy automates the research and brief work behind a DTC brand's Meta ads: drop in the brand's website, and it reads the real brand, researches customers and competitors, then turns it into ranked ad concepts and a ready-to-use creative brief, with on-brand renders attached.",
       offers: [
         {
           '@type': 'Offer',
