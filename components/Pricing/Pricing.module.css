@@ -1,38 +1,66 @@
-/* Pricing (#pricing): monthly / yearly toggle over four plan cards. */
+/* Pricing (#pricing): monthly / yearly toggle over three plan cards. Pro is the raised hero,
+   Max the dark premium card, Starter stays quiet. On desktop each card is a subgrid over the
+   same six rows, so names, prices and buttons line up whatever the copy length. */
 .pricing :global(.sec-head) { margin-bottom: 36px; }
 /* On /pricing the section opens the page, so it sits at the hero's distance from the nav. */
 .pricing.standalone { padding-top: 84px; }
-.bill { display: flex; width: fit-content; margin: 0 auto 48px; padding: 4px; border-radius: var(--radius-full); background: var(--bg-sunken); }
+.bill { display: flex; width: fit-content; margin: 0 auto 20px; padding: 4px; border-radius: var(--radius-full); background: var(--bg-sunken); }
 .bill button { height: 38px; padding: 0 20px; border: 0; border-radius: var(--radius-full); background: transparent; font: 500 14.5px/1 var(--font-sans); letter-spacing: -0.01em; color: var(--fg-2); cursor: pointer; }
 .bill button[aria-pressed="true"] { background: #fff; color: var(--fg); box-shadow: 0 1px 4px rgba(14, 17, 22, 0.12); }
-.plans { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; align-items: stretch; }
-.plan { display: flex; flex-direction: column; padding: 28px 24px 30px; border-radius: 24px; background: var(--bg-sunken); }
-.hot { background: #fff; box-shadow: 0 0 0 1px var(--border), var(--float-shadow); }
-.note { margin-top: 28px; text-align: center; font-size: 15px; line-height: 22px; color: var(--fg-2); }
+.free { display: block; width: fit-content; margin: 0 auto 44px; font-size: 15px; line-height: 22px; font-weight: 500; letter-spacing: -0.01em; color: var(--fg); }
+.free:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+.plans { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 20px; align-items: stretch; }
+.plan {
+  display: grid; grid-row: span 6; grid-template-rows: subgrid;
+  padding: 28px 28px 30px; border-radius: 24px; background: var(--bg-sunken);
+}
+.hot {
+  margin: -16px 0; padding: 44px 28px 46px; background: #fff;
+  box-shadow: 0 0 0 2px var(--accent), var(--shadow-featured);
+}
+.max { background: var(--bg-ink); color: #fff; box-shadow: var(--shadow-dark); }
+.note { margin-top: 36px; text-align: center; font-size: 15px; line-height: 22px; color: var(--fg-2); }
+
 .plan h3 { display: flex; align-items: center; gap: 10px; font-size: 20px; line-height: 26px; font-weight: 600; letter-spacing: -0.02em; }
-.popular { display: inline-flex; align-items: center; height: 22px; padding: 0 9px; border-radius: var(--radius-full); background: var(--fg); color: #fff; font-size: 12px; font-weight: 500; letter-spacing: 0; }
-.plan .tag { margin-top: 4px; min-height: 66px; font-size: 15px; line-height: 22px; color: var(--fg-2); text-wrap: balance; }
-.price { margin-top: 26px; display: flex; align-items: baseline; gap: 4px; }
+.popular { display: inline-flex; align-items: center; height: 22px; padding: 0 9px; border-radius: var(--radius-full); background: var(--accent-soft); box-shadow: inset 0 0 0 1px var(--accent-border); color: var(--accent); font-size: 12px; font-weight: 600; letter-spacing: 0; }
+.plan .tag { margin-top: 6px; font-size: 15px; line-height: 22px; color: var(--fg-2); text-wrap: balance; }
+.max .tag { color: var(--border); }
+.price { margin-top: 24px; display: flex; align-items: baseline; gap: 4px; }
 .price b { font-size: 44px; line-height: 48px; font-weight: 500; letter-spacing: -0.04em; font-variant-numeric: tabular-nums; }
 .price small { font-size: 15px; color: var(--fg-2); }
-.plan :global(.pill) { margin-top: 20px; width: 100%; }
-.incl { margin-top: 26px; padding-top: 22px; border-top: 1px solid rgba(14, 17, 22, 0.08); display: flex; flex-direction: column; gap: 11px; }
+.max .price small { color: var(--border); }
+.billed { min-height: 20px; margin-top: 2px; font-size: 13.5px; line-height: 20px; color: var(--fg-3); }
+.max .billed { color: var(--fg-muted); }
+.plan :global(.pill) { margin-top: 16px; width: 100%; align-self: start; }
+.hot :global(.pill) { box-shadow: 0 6px 16px -6px rgba(28, 66, 230, 0.55); }
+.plan .onDark { background: #fff; color: var(--fg); }
+.plan .onDark:hover { background: var(--accent-soft); }
+
+.incl { margin-top: 26px; padding-top: 22px; border-top: 1px solid rgba(14, 17, 22, 0.08); }
 .hot .incl { border-top-color: var(--border-hairline); }
+.max .incl { border-top-color: rgba(255, 255, 255, 0.16); }
+.lead { margin-bottom: 14px; font-size: 14.5px; line-height: 21px; font-weight: 600; letter-spacing: -0.01em; color: var(--fg); }
+.max .lead { color: #fff; }
+.incl ul { display: flex; flex-direction: column; gap: 11px; }
 .incl li { display: flex; gap: 10px; font-size: 14.5px; line-height: 21px; color: var(--fg-2); text-wrap: pretty; }
+.max .incl li { color: var(--border); }
 .incl svg { width: 16px; height: 16px; margin-top: 2.5px; flex-shrink: 0; fill: none; stroke: var(--fg); stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+.hot .incl svg { stroke: var(--accent); }
+.max .incl svg { stroke: var(--loopy-periwinkle); }
 
-/* Narrow 4-up cards wrap the longest tag to four lines; keep the prices level. */
-@media (min-width: 1181px) and (max-width: 1366px) {
-  .plan .tag { min-height: 88px; }
-}
-
-@media (max-width: 1180px) {
-  .plans { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+/* Below this the three cards are too tight: stack them, Pro keeps its ring and badge. */
+@media (max-width: 960px) {
+  .plans { grid-template-columns: minmax(0, 520px); justify-content: center; gap: 16px; }
+  .plan { display: flex; flex-direction: column; grid-row: auto; }
+  .hot { margin: 0; padding: 28px 28px 30px; }
+  .plan :global(.pill) { align-self: stretch; }
 }
 
 @media (max-width: 720px) {
   .pricing.standalone { padding-top: 44px; }
-  .plans { grid-template-columns: 1fr; }
-  .bill { margin-bottom: 32px; }
-  .plan .tag { min-height: 0; }
+  .bill { margin-bottom: 16px; }
+  .free { margin-bottom: 32px; }
+  .plan, .hot { padding: 24px 22px 26px; }
+  .note { margin-top: 28px; }
 }

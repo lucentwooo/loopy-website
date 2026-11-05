@@ -7,36 +7,27 @@ import styles from './Pricing.module.css';
 
 const [STARTER, PRO] = PAID_PLANS;
 
-// Paid card copy matches the app's plan cards word for word; change both together.
+// Card copy matches the app's plan cards word for word; change both together.
 type Plan = {
   name: string;
   tag: string;
   cta: string;
   href: string;
+  /** Pro: raised, brand-blue ring, primary button. */
   hot?: boolean;
-  /** Paid plans show a price that follows the billing toggle; the rest show `flat`. */
+  /** Max: dark card. */
+  dark?: boolean;
+  /** Paid plans show a price that follows the billing toggle; Max shows `flat`. */
   paid?: PaidPlan;
   flat?: string;
   /** Prefix the price, as in "From $1,999/mo". */
   from?: boolean;
+  /** Heading line above the list, "Everything in Starter, plus:". */
+  lead?: string;
   includes: string[];
 };
 
 const PLANS: Plan[] = [
-  {
-    name: FREE_PLAN.name,
-    tag: 'See it work on your real brand.',
-    flat: '$0',
-    cta: 'Start free',
-    href: APP_URL,
-    includes: [
-      `${FREE_PLAN.brands} brand`,
-      '1 full brief: research, hooks, copy',
-      `${FREE_PLAN.researchRuns} customer research run`,
-      `${FREE_PLAN.lifetimeRenders} image renders`,
-      'No card needed',
-    ],
-  },
   {
     name: STARTER.name,
     tag: 'New ad concepts every month for one brand, each backed by what your customers say.',
@@ -46,11 +37,8 @@ const PLANS: Plan[] = [
     includes: [
       '1 brand',
       `${STARTER.adsPerMonth} finished ads a month`,
-      '1 image per ad, plus 3 re-rolls',
-      'Deep customer research, refreshed every week',
-      'Competitor ads your rivals keep paying to run',
-      'Personas and messaging from real customer words',
-      'Dig deeper on any concept: fresh customer quotes, a sharper rewrite and new angles (5 per brand each week)',
+      'Weekly customer research and competitor ads',
+      'Dig deeper 5 times a week',
     ],
   },
   {
@@ -60,11 +48,13 @@ const PLANS: Plan[] = [
     hot: true,
     cta: 'Start with 3 brands',
     href: APP_URL,
+    lead: `Everything in ${STARTER.name}, plus:`,
     includes: [
       `${PRO.brands} brands`,
-      'Everything in Starter',
       `${PRO.adsPerMonth} finished ads a month`,
+      'Dig deeper 15 times a week (5 per brand)',
       'Guided onboarding call',
+      'Priority support: the founders reply within one working day',
     ],
   },
   {
@@ -72,11 +62,13 @@ const PLANS: Plan[] = [
     tag: 'We help you build your ad operation in-house and automate your creative workflow.',
     flat: `$${MAX_PLAN.fromMonthly.toLocaleString('en-US')}`,
     from: true,
+    dark: true,
     cta: 'Talk to us',
     href: CAL_URL,
+    lead: `Everything in ${PRO.name}, plus:`,
     includes: [
       'As many brands as you need',
-      'Everything in Pro',
+      'Monthly ads set to fit your team',
       'We set up your in-house ad workflow with you',
       'Direct line to the founders',
     ],
@@ -111,7 +103,7 @@ export function Pricing({ standalone = false }: { standalone?: boolean }) {
         <Heading className="sh">Start free, then pay as you add brands.</Heading>
         <p className="sub">
           For DTC brands and the creative strategists who make their ads. Local service businesses can try it too.
-          Pay monthly, or pay yearly and save {ANNUAL_SAVINGS_PCT}%.
+          Pay monthly or yearly.
         </p>
       </div>
       <div className={styles.bill} role="group" aria-label="Billing period">
@@ -121,11 +113,15 @@ export function Pricing({ standalone = false }: { standalone?: boolean }) {
           </button>
         ))}
       </div>
+      <a className={styles.free} href={APP_URL}>
+        Or start free with {FREE_PLAN.brands} brand, no card <span aria-hidden="true">→</span>
+      </a>
       <div className={styles.plans}>
         {PLANS.map((plan) => {
           const price = plan.paid ? priceFor(plan.paid, period) : null;
+          const cls = [styles.plan, plan.hot && styles.hot, plan.dark && styles.max].filter(Boolean).join(' ');
           return (
-            <article key={plan.name} className={`${styles.plan}${plan.hot ? ` ${styles.hot}` : ''}`}>
+            <article key={plan.name} className={cls}>
               <h3>
                 {plan.name}
                 {plan.hot && <span className={styles.popular}>Most popular</span>}
@@ -136,22 +132,30 @@ export function Pricing({ standalone = false }: { standalone?: boolean }) {
                 <b>{price === null ? plan.flat : `$${price}`}</b>
                 {(price !== null || plan.from) && <small>/mo</small>}
               </p>
-              <a className={`pill ${plan.hot ? 'pill-primary' : 'pill-outline'}`} href={plan.href}>
+              <p className={styles.billed}>
+                {price !== null && period === 'annual' && `$${(price * 12).toLocaleString('en-US')} billed yearly`}
+              </p>
+              <a className={`pill ${plan.hot ? 'pill-primary' : plan.dark ? styles.onDark : 'pill-outline'}`} href={plan.href}>
                 {plan.cta}
               </a>
-              <ul className={styles.incl}>
-                {plan.includes.map((item) => (
-                  <li key={item}>
-                    <Tick />
-                    {item}
-                  </li>
-                ))}
-              </ul>
+              <div className={styles.incl}>
+                {plan.lead && <p className={styles.lead}>{plan.lead}</p>}
+                <ul>
+                  {plan.includes.map((item) => (
+                    <li key={item}>
+                      <Tick />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </article>
           );
         })}
       </div>
-      <p className={styles.note}>Pick a plan in the app and pay by card.</p>
+      <p className={styles.note}>
+        Every paid ad comes with 1 image and up to 3 re-rolls. Pay yearly and save {ANNUAL_SAVINGS_PCT}%.
+      </p>
     </section>
   );
 }

@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Nav } from '@/components/Nav/Nav';
 import { Pricing } from '@/components/Pricing/Pricing';
+import { Compare } from '@/components/Compare/Compare';
 import { Faq } from '@/components/Faq/Faq';
 import { Footer } from '@/components/Footer/Footer';
 
@@ -17,6 +18,7 @@ export default function PricingPage() {
       <Nav page="pricing" />
       <main>
         <Pricing standalone />
+        <Compare />
         <Faq />
       </main>
       <Footer page="pricing" />
