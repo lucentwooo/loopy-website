@@ -11,16 +11,20 @@
 .note { margin-top: 28px; text-align: center; font-size: 15px; line-height: 22px; color: var(--fg-2); }
 .plan h3 { display: flex; align-items: center; gap: 10px; font-size: 20px; line-height: 26px; font-weight: 600; letter-spacing: -0.02em; }
 .popular { display: inline-flex; align-items: center; height: 22px; padding: 0 9px; border-radius: var(--radius-full); background: var(--fg); color: #fff; font-size: 12px; font-weight: 500; letter-spacing: 0; }
-.plan .tag { margin-top: 4px; min-height: 44px; font-size: 15px; line-height: 22px; color: var(--fg-2); text-wrap: balance; }
+.plan .tag { margin-top: 4px; min-height: 66px; font-size: 15px; line-height: 22px; color: var(--fg-2); text-wrap: balance; }
 .price { margin-top: 26px; display: flex; align-items: baseline; gap: 4px; }
 .price b { font-size: 44px; line-height: 48px; font-weight: 500; letter-spacing: -0.04em; font-variant-numeric: tabular-nums; }
 .price small { font-size: 15px; color: var(--fg-2); }
-.yr { min-height: 20px; margin-top: 2px; font-size: 13.5px; line-height: 20px; color: var(--fg-2); }
 .plan :global(.pill) { margin-top: 20px; width: 100%; }
 .incl { margin-top: 26px; padding-top: 22px; border-top: 1px solid rgba(14, 17, 22, 0.08); display: flex; flex-direction: column; gap: 11px; }
 .hot .incl { border-top-color: var(--border-hairline); }
 .incl li { display: flex; gap: 10px; font-size: 14.5px; line-height: 21px; color: var(--fg-2); text-wrap: pretty; }
 .incl svg { width: 16px; height: 16px; margin-top: 2.5px; flex-shrink: 0; fill: none; stroke: var(--fg); stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+
+/* Narrow 4-up cards wrap the longest tag to four lines; keep the prices level. */
+@media (min-width: 1181px) and (max-width: 1366px) {
+  .plan .tag { min-height: 88px; }
+}
 
 @media (max-width: 1180px) {
   .plans { grid-template-columns: repeat(2, minmax(0, 1fr)); }

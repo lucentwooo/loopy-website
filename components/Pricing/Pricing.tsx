@@ -2,20 +2,23 @@
 
 import { useState } from 'react';
 import { APP_URL, CAL_URL } from '@/lib/site';
-import { ANNUAL_SAVINGS_PCT, FREE_PLAN, PAID_PLANS, STUDIO_PLAN, priceFor, type BillingPeriod, type PaidPlan } from '@/lib/billing-catalog';
+import { ANNUAL_SAVINGS_PCT, FREE_PLAN, MAX_PLAN, PAID_PLANS, priceFor, type BillingPeriod, type PaidPlan } from '@/lib/billing-catalog';
 import styles from './Pricing.module.css';
 
-const [STARTER, AGENCY] = PAID_PLANS;
+const [STARTER, PRO] = PAID_PLANS;
 
+// Paid card copy matches the app's plan cards word for word; change both together.
 type Plan = {
   name: string;
   tag: string;
   cta: string;
   href: string;
   hot?: boolean;
-  /** Paid plans show a price per month and per brand; the rest show `flat`. */
+  /** Paid plans show a price that follows the billing toggle; the rest show `flat`. */
   paid?: PaidPlan;
   flat?: string;
+  /** Prefix the price, as in "From $1,999/mo". */
+  from?: boolean;
   includes: string[];
 };
 
@@ -36,43 +39,45 @@ const PLANS: Plan[] = [
   },
   {
     name: STARTER.name,
-    tag: 'Research and briefs for your first few clients.',
+    tag: 'New ad concepts every month for one brand, each backed by what your customers say.',
     paid: STARTER,
-    cta: `Start with ${STARTER.brands} brands`,
+    cta: 'Start with 1 brand',
     href: APP_URL,
     includes: [
-      `${STARTER.brands} client brands`,
-      'Unlimited briefs, hooks and copy',
-      'Deep customer research on every brand',
-      'Learns from your ad results',
-      `${STARTER.rendersPerMonth.toLocaleString('en-US')} image renders a month`,
+      '1 brand',
+      `${STARTER.adsPerMonth} finished ads a month`,
+      '1 image per ad, plus 3 re-rolls',
+      'Deep customer research, refreshed every week',
+      'Competitor ads your rivals keep paying to run',
+      'Personas and messaging from real customer words',
+      'Dig deeper on any concept: fresh customer quotes, a sharper rewrite and new angles (5 per brand each week)',
     ],
   },
   {
-    name: AGENCY.name,
-    tag: 'Know what ad to make next, for every client.',
-    paid: AGENCY,
+    name: PRO.name,
+    tag: 'For creative strategists and brands with several product lines.',
+    paid: PRO,
     hot: true,
-    cta: `Start with ${AGENCY.brands} brands`,
+    cta: 'Start with 3 brands',
     href: APP_URL,
     includes: [
-      `${AGENCY.brands} client brands`,
+      `${PRO.brands} brands`,
       'Everything in Starter',
-      'Client workspaces',
+      `${PRO.adsPerMonth} finished ads a month`,
       'Guided onboarding call',
-      `${AGENCY.rendersPerMonth.toLocaleString('en-US')} image renders a month`,
     ],
   },
   {
-    name: STUDIO_PLAN.name,
-    tag: 'For rosters bigger than 10 clients.',
-    flat: 'Custom',
+    name: MAX_PLAN.name,
+    tag: 'We help you build your ad operation in-house and automate your creative workflow.',
+    flat: `$${MAX_PLAN.fromMonthly.toLocaleString('en-US')}`,
+    from: true,
     cta: 'Talk to us',
     href: CAL_URL,
     includes: [
-      `${STUDIO_PLAN.minBrands} brands, more if you need them`,
-      'Everything in Agency',
-      'Dedicated onboarding',
+      'As many brands as you need',
+      'Everything in Pro',
+      'We set up your in-house ad workflow with you',
       'Direct line to the founders',
     ],
   },
@@ -103,8 +108,11 @@ export function Pricing({ standalone = false }: { standalone?: boolean }) {
       id="pricing"
     >
       <div className="sec-head">
-        <Heading className="sh">Start free, then pay as your client list grows.</Heading>
-        <p className="sub">Pay monthly, or pay yearly and save {ANNUAL_SAVINGS_PCT}%.</p>
+        <Heading className="sh">Start free, then pay as you add brands.</Heading>
+        <p className="sub">
+          For DTC brands and the creative strategists who make their ads. Local service businesses can try it too.
+          Pay monthly, or pay yearly and save {ANNUAL_SAVINGS_PCT}%.
+        </p>
       </div>
       <div className={styles.bill} role="group" aria-label="Billing period">
         {PERIODS.map((p) => (
@@ -124,11 +132,9 @@ export function Pricing({ standalone = false }: { standalone?: boolean }) {
               </h3>
               <p className={styles.tag}>{plan.tag}</p>
               <p className={styles.price}>
+                {plan.from && <small>From</small>}
                 <b>{price === null ? plan.flat : `$${price}`}</b>
-                {price !== null && <small>/mo</small>}
-              </p>
-              <p className={styles.yr}>
-                {plan.paid && price !== null ? `$${Math.round(price / plan.paid.brands)} a brand` : null}
+                {(price !== null || plan.from) && <small>/mo</small>}
               </p>
               <a className={`pill ${plan.hot ? 'pill-primary' : 'pill-outline'}`} href={plan.href}>
                 {plan.cta}
