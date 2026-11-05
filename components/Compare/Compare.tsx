@@ -5,11 +5,11 @@ type Cell = 'yes' | 'no' | string;
 const COLUMNS = ['Ad library', 'AI ad generator', 'Agency or freelancer', 'Loopy'] as const;
 
 const ROWS: { label: string; cells: [Cell, Cell, Cell, Cell] }[] = [
-  { label: 'Shows the ads your rivals keep paying to run', cells: ['yes', 'no', 'Sometimes', 'yes'] },
-  { label: "Tells you why an idea should work, in your customers' words", cells: ['no', 'no', 'Sometimes', 'yes'] },
-  { label: 'A brief your designer can use', cells: ['Some', 'no', 'yes', 'yes'] },
-  { label: 'Hands you a finished ad', cells: ['no', 'yes', 'yes', 'yes'] },
-  { label: 'Typical cost a month', cells: ['$60–460', '$40–250', '$3,000+', 'From $149'] },
+  { label: 'Ads rivals keep running', cells: ['yes', 'no', 'Sometimes', 'yes'] },
+  { label: "Why it works, in customers' words", cells: ['no', 'no', 'Sometimes', 'yes'] },
+  { label: 'Designer-ready brief', cells: ['Some', 'no', 'yes', 'yes'] },
+  { label: 'Finished ad', cells: ['no', 'yes', 'yes', 'yes'] },
+  { label: 'Cost a month', cells: ['$60–460', '$40–250', '$3,000+', 'From $149'] },
 ];
 
 function Mark({ cell }: { cell: Cell }) {
@@ -42,8 +42,7 @@ export function Compare() {
       <div className="sec-head">
         <h2 className="sh">Why Loopy, not another tool</h2>
         <p className="sub">
-          Ad libraries show you what rivals run. AI generators make images. Loopy tells you which ad to make next,
-          backed by what your customers say, and then makes it.
+          Loopy picks your next ad from what your customers say, then makes it.
         </p>
       </div>
       <table className={styles.table}>
@@ -74,7 +73,7 @@ export function Compare() {
           ))}
         </tbody>
       </table>
-      <p className={styles.note}>Tool prices from their own pricing pages, November 2026. Agency fees vary.</p>
+      <p className={styles.note}>Prices from vendor sites, Nov 2026.</p>
     </section>
   );
 }
