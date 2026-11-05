@@ -12,7 +12,7 @@ export function Loop() {
       <span className={styles.beta}>Beta</span>
       <h2 className="sh">Then it learns what worked.</h2>
       <p className="sub">
-        Connect your client’s Meta and Google Analytics accounts, which Loopy can only read. It looks at which ads did
+        Connect your Meta and Google Analytics accounts, which Loopy can only read. It looks at which ads did
         well and uses those lessons in the next brief. This part is still new, but it’s live now.
       </p>
       <div className={styles.fig}>

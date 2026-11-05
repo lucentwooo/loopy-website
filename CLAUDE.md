@@ -10,9 +10,10 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this is
 
-Marketing site for **Loopy** (tryloopy.io): customer research and client-ready Meta
-ad briefs for agencies running DTC brands. Loopy reads a client's site, finds what
-their customers really say, ranks ad ideas by awareness stage and writes the brief.
+Marketing site for **Loopy** (tryloopy.io): customer research and ready-to-use Meta
+ad briefs for DTC brands and the creative strategists who make their ads. Loopy reads
+the brand's site, finds what its customers really say, ranks ad ideas by awareness
+stage and writes the brief. Selling copy never addresses agencies or "clients".
 No backend, no database: a static App Router site with three routes (`/` landing,
 `/pricing`, `/ad-creative-brief-template` SEO page). The landing is a 1:1 port of the
 locked DS v2 mockup `landing-v7.html` (app repo, `docs/design/loopy-ds-v2/mockups/`,

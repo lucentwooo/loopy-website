@@ -3,7 +3,7 @@
 
 export function GlobeIcon() {
   return (
-    <svg className="docic globeic" viewBox="0 0 30 30" role="img" aria-label="Your client's website">
+    <svg className="docic globeic" viewBox="0 0 30 30" role="img" aria-label="Your website">
       <circle cx="15" cy="15" r="11.5" />
       <path d="M3.5 15h23M15 3.5c3.2 3.1 4.8 7 4.8 11.5S18.2 23.4 15 26.5M15 3.5c-3.2 3.1-4.8 7-4.8 11.5s1.6 8.4 4.8 11.5" />
     </svg>

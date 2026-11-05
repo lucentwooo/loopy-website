@@ -7,8 +7,8 @@ export function FinalCta() {
   return (
     <section className="wrap section">
       <div className={styles.final}>
-        <h2 className="sh">Bring one of your clients and leave with a finished brief.</h2>
-        <p className="sub">In a 20-minute demo, we build the brief live on your client’s site, and it’s yours to keep.</p>
+        <h2 className="sh">Bring your brand and leave with a finished brief.</h2>
+        <p className="sub">In a 20-minute demo, we build the brief live on your site, and it’s yours to keep.</p>
         <div className="ctas">
           <a className="pill pill-primary" href={CAL_URL}>
             Book a demo

@@ -11,7 +11,7 @@ const APPS = [
   ['/landing/appicons/appstore.svg', 'App Store'],
 ] as const;
 
-const SOURCES = ['Your client’s site', 'Customer reviews', 'Reddit threads', 'Competitor ads', 'Your notes and files'];
+const SOURCES = ['Your site', 'Customer reviews', 'Reddit threads', 'Competitor ads', 'Your notes and files'];
 
 /* The four real books, oldest first. Cover sizes keep each scan's own ratio at
    the shelf's display height. Served as-is (small files): a resized copy would
@@ -35,8 +35,8 @@ export function BetterInput() {
       <div className="sec-head">
         <h2 className="sh">Most AI ads sound the same because they start from a blank prompt.</h2>
         <p className="sub">
-          So Loopy starts with better input. It reads what your client’s customers say and studies the ads that
-          already run in their space. Then it writes with rules from the best ad writers of all time.
+          So Loopy starts with better input. It reads what your customers say and studies the ads that
+          already run in your space. Then it writes with rules from the best ad writers of all time.
         </p>
       </div>
 

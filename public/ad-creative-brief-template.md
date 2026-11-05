@@ -2,14 +2,14 @@
 
 From tryloopy.io/ad-creative-brief-template. Two halves: one brand header, then one block per concept.
 
-## Part 1 - Brand header (once per client)
+## Part 1 - Brand header (once per brand)
 
-- Client / brand: name + one line on what they sell
+- Brand: name + one line on what they sell
 - Objective / success metric: sales - cost per purchase < $40
 - Audience: who, in one sentence, with a real problem
 - Awareness stage: problem-aware / solution-aware / most-aware
 - About + proof stats: one-line story + review count, guarantee, quoted verbatim
-- Website & assets: client URL - logo + product-shot links - customer-image source
+- Website & assets: brand URL - logo + product-shot links - customer-image source
 - Fonts: role-based, e.g. Playfair Display headers, Inter body
 - Colour scheme: text #... - accent #... - background #... - CTA #...
 - Dimensions: feed 1080x1080 - story 1080x1920 - due date

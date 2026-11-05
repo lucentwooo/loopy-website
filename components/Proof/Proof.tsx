@@ -3,7 +3,7 @@ import styles from './Proof.module.css';
 const STATS = [
   ['7-9 figures', 'revenue range of their client brands'],
   ['$50k-$100k/mo', 'Meta spend on some of those accounts'],
-  ['Minutes', 'to research a client and write the brief'],
+  ['Minutes', 'to research a brand and write the brief'],
 ];
 
 export function Proof() {
