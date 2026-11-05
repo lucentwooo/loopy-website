@@ -77,11 +77,12 @@ per-brand folders in `public/creatives/` are left over from the previous landing
 are no longer referenced.
 
 **CTAs are plain links.** `lib/site.ts` exports `CAL_URL` (the 20-minute demo: Book a
-demo, Studio's Talk to us, Talk to the founders) and `APP_URL` (the self-serve app: Try
-it free, Sign in, Start free, Start with 3 / 10 brands; Privacy and Terms live at
+demo, Max's Talk to us, Talk to the founders) and `APP_URL` (the self-serve app: Try
+it free, Sign in, Start free, Start with 1 / 3 brands; Privacy and Terms live at
 `APP_URL/privacy` and `/terms`), plus `SITE_URL`. No embeds, no forms. Plan numbers come
-from `lib/billing-catalog.ts` (yearly is 15% off, matching the app's `TERM_DISCOUNT`;
-the per-brand line is price / brands, rounded). Analytics: PostHog
+from `lib/billing-catalog.ts` (yearly is 15% off, matching the app's `TERM_DISCOUNT`);
+the plan card words in `components/Pricing/Pricing.tsx` match the app's plan cards
+word for word. Analytics: PostHog
 (`components/PostHog.tsx`, autocapture, proxied through the `/ingest` rewrites in
 `next.config.ts`) and GA in the root layout. `lib/analytics.ts` `track()` is a no-op
 until something attaches `window.va`, and nothing calls it.

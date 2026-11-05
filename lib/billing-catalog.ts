@@ -13,30 +13,28 @@ export const PERIOD_MULTIPLIER: Record<BillingPeriod, number> = {
 export const ANNUAL_SAVINGS_PCT = Math.round((1 - PERIOD_MULTIPLIER.annual) * 100);
 
 export interface PaidPlan {
+  /** The app's plan keys: Pro is still `agency` in the app's database. */
   id: 'starter' | 'agency';
   name: string;
   monthlyPrice: number;
   brands: number;
-  rendersPerMonth: number;
-  extraBrandMonthly: number;
+  adsPerMonth: number;
 }
 
 export const PAID_PLANS: PaidPlan[] = [
   {
     id: 'starter',
     name: 'Starter',
-    monthlyPrice: 249,
-    brands: 3,
-    rendersPerMonth: 300,
-    extraBrandMonthly: 79,
+    monthlyPrice: 149,
+    brands: 1,
+    adsPerMonth: 30,
   },
   {
     id: 'agency',
-    name: 'Agency',
-    monthlyPrice: 499,
-    brands: 10,
-    rendersPerMonth: 1000,
-    extraBrandMonthly: 49,
+    name: 'Pro',
+    monthlyPrice: 299,
+    brands: 3,
+    adsPerMonth: 100,
   },
 ];
 
@@ -47,10 +45,10 @@ export const FREE_PLAN = {
   lifetimeRenders: 10,
 } as const;
 
-export const STUDIO_PLAN = {
-  name: 'Studio',
-  minBrands: 25,
-  rendersPerMonth: 2500,
+/** Booked through a call, never card checkout. */
+export const MAX_PLAN = {
+  name: 'Max',
+  fromMonthly: 1999,
 } as const;
 
 export function priceFor(plan: PaidPlan, period: BillingPeriod): number {
