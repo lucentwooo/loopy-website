@@ -2,6 +2,7 @@
 
 import { useEffect } from 'react';
 import posthog from 'posthog-js';
+import { captureTouch } from '@/lib/touch';
 
 let initialized = false;
 
@@ -16,6 +17,7 @@ export function PostHog() {
   useEffect(() => {
     if (initialized) return;
     initialized = true;
+    captureTouch();
     posthog.init('phc_kBY8dHSpVgFQg8qZFvUhHyT6xVtXXtXBhxMep9JuWxou', {
       api_host: '/ingest',
       ui_host: 'https://us.posthog.com',
