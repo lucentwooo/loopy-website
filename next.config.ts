@@ -17,9 +17,14 @@ const nextConfig: NextConfig = {
   skipTrailingSlashRedirect: true,
   // The ad breakdowns live in the app; Reels may link the bare domain.
   // Temporary (307) so the target can move without browsers caching it.
+  // Every other page goes to the app's waitlist page (owner, 22 Nov 2026): signups are waitlist-only, so the
+  // old "try it" / "book a demo" buttons here lead nowhere. Query strings (utm tags) carry over. /ingest stays
+  // for the PostHog proxy.
   async redirects() {
     return [
       { source: '/resources/:path*', destination: 'https://app.tryloopy.io/resources/:path*', permanent: false },
+      { source: '/', destination: 'https://app.tryloopy.io/start', permanent: false },
+      { source: '/:path((?!ingest(?:/|$)|resources(?:/|$)).+)', destination: 'https://app.tryloopy.io/start', permanent: false },
     ];
   },
   async rewrites() {
