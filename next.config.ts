@@ -24,11 +24,13 @@ const nextConfig: NextConfig = {
     return [
       { source: '/resources/:path*', destination: 'https://app.tryloopy.io/resources/:path*', permanent: false },
       { source: '/', destination: 'https://app.tryloopy.io/start', permanent: false },
-      { source: '/:path((?!ingest(?:/|$)|resources(?:/|$)).+)', destination: 'https://app.tryloopy.io/start', permanent: false },
+      { source: '/:path((?!ingest(?:/|$)|resources(?:/|$)|for(?:/|$)).+)', destination: 'https://app.tryloopy.io/start', permanent: false },
     ];
   },
   async rewrites() {
     return [
+      { source: '/for/:brand', destination: '/for/:brand/index.html' },
+      { source: '/for/:brand/', destination: '/for/:brand/index.html' },
       { source: '/ingest/static/:path*', destination: 'https://us-assets.i.posthog.com/static/:path*' },
       { source: '/ingest/:path*', destination: 'https://us.i.posthog.com/:path*' },
     ];
